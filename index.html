@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alex & Jamie - We're Getting Married!</title>
+    <title>Philip & Rita - We're Getting Married!</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,7 +15,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -33,12 +33,21 @@
             font-family: 'Playfair Display', serif;
         }
         
+        .elegant-script {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+        }
+        
         .gradient-sunset {
             background: linear-gradient(135deg, #FDE68A 0%, #FCD34D 25%, #FBBF24 50%, #F59E0B 75%, #FB923C 100%);
         }
         
         .gradient-sunrise {
             background: linear-gradient(180deg, #FEF3C7 0%, #FDE68A 50%, #FCD34D 100%);
+        }
+        
+        .gradient-warm {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 30%, #FCD34D 60%, #FBBF24 100%);
         }
         
         .text-gradient {
@@ -49,7 +58,6 @@
         }
         
         section {
-            min-height: 100vh;
             position: relative;
         }
         
@@ -60,22 +68,6 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-        }
-        
-        .image-placeholder {
-            background: linear-gradient(135deg, #FDE68A 0%, #FCD34D 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .image-placeholder::after {
-            content: '📸';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 3rem;
-            opacity: 0.3;
         }
         
         .hover-lift {
@@ -114,6 +106,47 @@
             z-index: 1000;
         }
         
+        .decorative-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .decorative-line::before,
+        .decorative-line::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #F59E0B, transparent);
+        }
+        
+        .decorative-line span {
+            padding: 0 1rem;
+            color: #F59E0B;
+            font-size: 1.5rem;
+        }
+        
+        .sponsor-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .sponsor-card:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.2);
+        }
+        
+        .heart-divider {
+            text-align: center;
+            margin: 3rem 0;
+            font-size: 2rem;
+            color: #F59E0B;
+            opacity: 0.5;
+        }
+        
         @media (max-width: 768px) {
             .sticky-rsvp {
                 bottom: 1rem;
@@ -121,6 +154,15 @@
                 left: 1rem;
                 width: calc(100% - 2rem);
             }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
         }
     </style>
 </head>
@@ -132,20 +174,36 @@
     </a>
 
     <!-- Hero Section -->
-    <section id="hero" class="gradient-sunset flex items-center justify-center relative overflow-hidden">
+    <section id="hero" class="gradient-sunset min-h-screen flex items-center justify-center relative overflow-hidden">
         <div class="parallax-bg gradient-sunset"></div>
-        <div class="container mx-auto px-6 text-center z-10">
+        <div class="container mx-auto px-6 text-center z-10 py-20">
             <div class="hero-content">
-                <h1 class="text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-6 leading-tight tracking-tight">
-                    We're Getting<br>Married!
-                </h1>
-                <p class="text-2xl md:text-4xl text-white font-light tracking-wide opacity-90">
-                    Alex & Jamie
-                </p>
-                <div class="mt-4 text-xl md:text-2xl text-white font-light opacity-80">
-                    12 July 2026
+                <div class="elegant-script text-3xl md:text-5xl text-white mb-8 opacity-90">
+                    Together with their families
                 </div>
-                <div class="mt-12">
+                <h1 class="text-7xl md:text-9xl lg:text-[10rem] font-bold text-white mb-8 leading-tight tracking-tight">
+                    Philip <span class="elegant-script text-6xl md:text-8xl">&</span> Rita
+                </h1>
+                <div class="elegant-script text-2xl md:text-4xl text-white mb-6 opacity-90 leading-relaxed max-w-3xl mx-auto">
+                    request the honour of your presence<br>
+                    at the ceremony and celebration of their wedding
+                </div>
+                <div class="decorative-line my-8">
+                    <span>❦</span>
+                </div>
+                <div class="text-3xl md:text-5xl text-white font-light tracking-wide mb-3">
+                    November 22, 2025
+                </div>
+                <div class="text-xl md:text-3xl text-white font-light opacity-90">
+                    2:00 PM
+                </div>
+                <div class="mt-8 text-lg md:text-xl text-white opacity-80">
+                    St. Joseph Cathedral
+                </div>
+                <div class="text-base md:text-lg text-white opacity-75 mt-2">
+                    Reception follows at Dream Paradise Mountain Resort
+                </div>
+                <div class="mt-16">
                     <svg class="w-8 h-8 mx-auto text-white opacity-60 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                     </svg>
@@ -154,31 +212,34 @@
         </div>
     </section>
 
-    <!-- Story Section -->
-    <section id="story" class="bg-white py-32 md:py-40">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-                <div class="story-image order-2 md:order-1">
-                    <div class="image-placeholder aspect-[4/5] rounded-2xl shadow-2xl hover-lift"></div>
+    <!-- Parents Section -->
+    <section id="parents" class="bg-white py-24 md:py-32">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-bold text-gradient mb-6">
+                    Pardoe – Marino Nuptials
+                </h2>
+                <div class="decorative-line">
+                    <span>✦</span>
                 </div>
-                <div class="story-text order-1 md:order-2">
-                    <h2 class="text-5xl md:text-7xl font-bold mb-8 text-gray-900 leading-tight">
-                        Our Story
-                    </h2>
-                    <div class="space-y-6 text-gray-600 text-lg md:text-xl leading-relaxed">
-                        <p>
-                            Our story began with coffee and chaos—a chance meeting at a bustling café 
-                            on a rainy Tuesday morning. What started as a simple conversation about 
-                            mismatched umbrellas turned into hours of laughter and connection.
-                        </p>
-                        <p>
-                            Five years, countless adventures, and one unforgettable proposal later, 
-                            we're ready to start the greatest chapter of our lives. And we want you 
-                            to be there to celebrate with us.
-                        </p>
-                        <p class="text-gradient font-semibold text-2xl pt-4">
-                            "In you, I've found my home, my adventure, and my forever."
-                        </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 md:gap-20">
+                <div class="parent-card text-center p-8 rounded-3xl hover-lift bg-gradient-to-br from-amber-50 to-orange-50">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-6 text-gray-800">Parents of the Groom</h3>
+                    <div class="elegant-script text-2xl md:text-3xl text-gray-700 space-y-2">
+                        <p>Frederick J. Pardoe</p>
+                        <p class="text-orange-600">&</p>
+                        <p>Julie L. Pardoe</p>
+                    </div>
+                </div>
+                
+                <div class="parent-card text-center p-8 rounded-3xl hover-lift bg-gradient-to-br from-amber-50 to-orange-50">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-6 text-gray-800">Parents of the Bride</h3>
+                    <div class="elegant-script text-2xl md:text-3xl text-gray-700 space-y-2">
+                        <p>Rogelio M. Marino Sr.</p>
+                        <p class="text-orange-600">&</p>
+                        <p>Marilyn M. Marino</p>
                     </div>
                 </div>
             </div>
@@ -186,76 +247,412 @@
     </section>
 
     <!-- Event Details Section -->
-    <section id="details" class="bg-gradient-to-br from-orange-500 via-orange-400 to-amber-400 py-32 md:py-40">
+    <section id="details" class="gradient-warm py-24 md:py-32">
         <div class="container mx-auto px-6">
-            <h2 class="text-5xl md:text-7xl font-bold text-center mb-20 text-white">
+            <h2 class="text-5xl md:text-7xl font-bold text-center mb-20 text-gray-900">
                 Event Details
             </h2>
-            <div class="grid md:grid-cols-3 gap-8 md:gap-12">
-                <div class="detail-card bg-white bg-opacity-10 backdrop-blur-sm p-10 rounded-3xl text-white text-center hover-lift">
-                    <div class="text-5xl mb-6">💒</div>
-                    <h3 class="text-2xl md:text-3xl font-bold mb-4">Ceremony</h3>
-                    <div class="space-y-2 text-lg opacity-90">
-                        <p class="font-semibold">Garden Chapel</p>
-                        <p>123 Sunset Boulevard</p>
-                        <p>Paradise Valley, CA</p>
-                        <p class="pt-4 text-xl font-semibold">4:00 PM</p>
+            <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                <div class="detail-card bg-white bg-opacity-80 backdrop-blur-sm p-12 rounded-3xl text-center hover-lift shadow-xl">
+                    <div class="text-6xl mb-6">💒</div>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Ceremony</h3>
+                    <div class="space-y-3 text-lg text-gray-700">
+                        <p class="font-bold text-2xl text-orange-600">St. Joseph Cathedral</p>
+                        <p>Romblon, Romblon</p>
+                        <div class="decorative-line my-4">
+                            <span>❦</span>
+                        </div>
+                        <p class="text-2xl font-semibold text-gray-900">2:00 PM</p>
+                        <p class="text-xl">November 22, 2025</p>
                     </div>
                 </div>
-                <div class="detail-card bg-white bg-opacity-10 backdrop-blur-sm p-10 rounded-3xl text-white text-center hover-lift">
-                    <div class="text-5xl mb-6">🥂</div>
-                    <h3 class="text-2xl md:text-3xl font-bold mb-4">Reception</h3>
-                    <div class="space-y-2 text-lg opacity-90">
-                        <p class="font-semibold">Golden Hour Estate</p>
-                        <p>456 Twilight Lane</p>
-                        <p>Paradise Valley, CA</p>
-                        <p class="pt-4 text-xl font-semibold">6:30 PM</p>
+                
+                <div class="detail-card bg-white bg-opacity-80 backdrop-blur-sm p-12 rounded-3xl text-center hover-lift shadow-xl">
+                    <div class="text-6xl mb-6">🥂</div>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Reception</h3>
+                    <div class="space-y-3 text-lg text-gray-700">
+                        <p class="font-bold text-2xl text-orange-600">Dream Paradise Mountain Resort</p>
+                        <p>Mapula, Romblon, Romblon</p>
+                        <div class="decorative-line my-4">
+                            <span>❦</span>
+                        </div>
+                        <p class="text-xl italic">Following the ceremony</p>
                     </div>
                 </div>
-                <div class="detail-card bg-white bg-opacity-10 backdrop-blur-sm p-10 rounded-3xl text-white text-center hover-lift">
-                    <div class="text-5xl mb-6">🎉</div>
-                    <h3 class="text-2xl md:text-3xl font-bold mb-4">Celebration</h3>
-                    <div class="space-y-2 text-lg opacity-90">
-                        <p class="font-semibold">Dancing & Dinner</p>
-                        <p>Under the Stars</p>
-                        <p>Live Band & DJ</p>
-                        <p class="pt-4 text-xl font-semibold">Until Midnight</p>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-16 text-center text-white text-lg opacity-90">
-                <p>Cocktail Attire • Adults Only Event</p>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="bg-gradient-sunrise py-32 md:py-40">
-        <div class="container mx-auto px-6">
-            <h2 class="text-5xl md:text-7xl font-bold text-center mb-20 text-gray-900">
-                Our Journey
+    <!-- Principal Sponsors Section -->
+    <section id="principal-sponsors" class="bg-white py-24 md:py-32">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <h2 class="text-5xl md:text-7xl font-bold text-center mb-6 text-gray-900">
+                Principal Sponsors
             </h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-                <div class="gallery-item image-placeholder aspect-square rounded-2xl hover-lift"></div>
-                <div class="gallery-item image-placeholder aspect-square rounded-2xl hover-lift md:translate-y-8"></div>
-                <div class="gallery-item image-placeholder aspect-square rounded-2xl hover-lift"></div>
-                <div class="gallery-item image-placeholder aspect-square rounded-2xl hover-lift md:translate-y-8"></div>
-                <div class="gallery-item image-placeholder aspect-square rounded-2xl hover-lift md:translate-y-4"></div>
-                <div class="gallery-item image-placeholder aspect-square rounded-2xl hover-lift"></div>
-                <div class="gallery-item image-placeholder aspect-square rounded-2xl hover-lift md:translate-y-4"></div>
-                <div class="gallery-item image-placeholder aspect-square rounded-2xl hover-lift"></div>
+            <div class="decorative-line mb-16">
+                <span>✦</span>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="sponsor-card p-6 rounded-2xl">
+                    <div class="flex items-center justify-between">
+                        <p class="text-lg font-semibold text-gray-800">Mr. Eugene O. Madeja</p>
+                        <span class="text-orange-500 mx-4">❦</span>
+                        <p class="text-lg font-semibold text-gray-800">Mrs. Rowena M. Madeja</p>
+                    </div>
+                </div>
+                
+                <div class="sponsor-card p-6 rounded-2xl">
+                    <div class="flex items-center justify-between">
+                        <p class="text-lg font-semibold text-gray-800">Mr. Juan M. Mayor</p>
+                        <span class="text-orange-500 mx-4">❦</span>
+                        <p class="text-lg font-semibold text-gray-800">Mrs. Ana Liza M. Mayor</p>
+                    </div>
+                </div>
+                
+                <div class="sponsor-card p-6 rounded-2xl">
+                    <div class="flex items-center justify-between">
+                        <p class="text-lg font-semibold text-gray-800">Mr. Salvo C. Lim</p>
+                        <span class="text-orange-500 mx-4">❦</span>
+                        <p class="text-lg font-semibold text-gray-800">Mrs. Maria Fe C. Manzano</p>
+                    </div>
+                </div>
+                
+                <div class="sponsor-card p-6 rounded-2xl">
+                    <div class="flex items-center justify-between">
+                        <p class="text-lg font-semibold text-gray-800">Mr. Ricky M. Indonila</p>
+                        <span class="text-orange-500 mx-4">❦</span>
+                        <p class="text-lg font-semibold text-gray-800">Mrs. Almi M. Prestosa</p>
+                    </div>
+                </div>
+                
+                <div class="sponsor-card p-6 rounded-2xl">
+                    <div class="flex items-center justify-between">
+                        <p class="text-lg font-semibold text-gray-800">Mr. Reynaldo Fajarda</p>
+                        <span class="text-orange-500 mx-4">❦</span>
+                        <p class="text-lg font-semibold text-gray-800">Mrs. Maria Lourdes M. Fajarda</p>
+                    </div>
+                </div>
+                
+                <div class="sponsor-card p-6 rounded-2xl">
+                    <div class="flex items-center justify-between">
+                        <p class="text-lg font-semibold text-gray-800">Mr. Joseph F. Mazo</p>
+                        <span class="text-orange-500 mx-4">❦</span>
+                        <p class="text-lg font-semibold text-gray-800">Mrs. Armi F. Mazo</p>
+                    </div>
+                </div>
+                
+                <div class="sponsor-card p-6 rounded-2xl">
+                    <div class="flex items-center justify-between">
+                        <p class="text-lg font-semibold text-gray-800">Mr. Hilarion M. Marquina Jr.</p>
+                        <span class="text-orange-500 mx-4">❦</span>
+                        <p class="text-lg font-semibold text-gray-800">Mrs. Marivic M. Mijares</p>
+                    </div>
+                </div>
+                
+                <div class="sponsor-card p-6 rounded-2xl">
+                    <div class="flex items-center justify-between">
+                        <p class="text-lg font-semibold text-gray-800">Mr. Eduardo Adarlo</p>
+                        <span class="text-orange-500 mx-4">❦</span>
+                        <p class="text-lg font-semibold text-gray-800">Mrs. Janet N. Escalada</p>
+                    </div>
+                </div>
+                
+                <div class="sponsor-card p-6 rounded-2xl">
+                    <div class="flex items-center justify-between">
+                        <p class="text-lg font-semibold text-gray-800">Mr. Romeo E. Capalad</p>
+                        <span class="text-orange-500 mx-4">❦</span>
+                        <p class="text-lg font-semibold text-gray-800">Mrs. Erna S. Capalad</p>
+                    </div>
+                </div>
+                
+                <div class="sponsor-card p-6 rounded-2xl">
+                    <div class="flex items-center justify-between">
+                        <p class="text-lg font-semibold text-gray-800">Mr. Heval M. Magracia</p>
+                        <span class="text-orange-500 mx-4">❦</span>
+                        <p class="text-lg font-semibold text-gray-800">Mrs. Rowena M. Magracia</p>
+                    </div>
+                </div>
+                
+                <div class="sponsor-card p-6 rounded-2xl">
+                    <div class="flex items-center justify-between">
+                        <p class="text-lg font-semibold text-gray-800">Hon. Lydon Molino</p>
+                        <span class="text-orange-500 mx-4">❦</span>
+                        <p class="text-lg font-semibold text-gray-800">Mrs. Osie M. Rguas</p>
+                    </div>
+                </div>
+                
+                <div class="sponsor-card p-6 rounded-2xl">
+                    <div class="flex items-center justify-between">
+                        <p class="text-lg font-semibold text-gray-800">Mr. Timothy T. Sejane</p>
+                        <span class="text-orange-500 mx-4">❦</span>
+                        <p class="text-lg font-semibold text-gray-800">Gov. Trina Alejandra F. Fabic</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Sponsors Section -->
+    <section id="sponsors" class="gradient-sunrise py-24 md:py-32">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <h2 class="text-5xl md:text-6xl font-bold text-center mb-16 text-gray-900">
+                Sponsors
+            </h2>
+            
+            <div class="space-y-12">
+                <div class="sponsor-group text-center p-10 bg-white bg-opacity-70 rounded-3xl hover-lift">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-6 text-orange-600 elegant-script">To Light Our Path</h3>
+                    <div class="flex items-center justify-center gap-4 text-lg md:text-xl text-gray-700">
+                        <p class="font-semibold">Jude R. Sim</p>
+                        <span class="text-orange-500">❦</span>
+                        <p class="font-semibold">Christine Joy Francisco</p>
+                    </div>
+                </div>
+                
+                <div class="sponsor-group text-center p-10 bg-white bg-opacity-70 rounded-3xl hover-lift">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-6 text-orange-600 elegant-script">To Clothe Us as One</h3>
+                    <div class="flex items-center justify-center gap-4 text-lg md:text-xl text-gray-700">
+                        <p class="font-semibold">Rogelio G. Marino III</p>
+                        <span class="text-orange-500">❦</span>
+                        <p class="font-semibold">Gretchen M. Mortera</p>
+                    </div>
+                </div>
+                
+                <div class="sponsor-group text-center p-10 bg-white bg-opacity-70 rounded-3xl hover-lift">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-6 text-orange-600 elegant-script">To Bind Us Together</h3>
+                    <div class="flex items-center justify-center gap-4 text-lg md:text-xl text-gray-700">
+                        <p class="font-semibold">Paul Clint M. Madula</p>
+                        <span class="text-orange-500">❦</span>
+                        <p class="font-semibold">Lorelie Maestro</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Entourage Section -->
+    <section id="entourage" class="bg-white py-24 md:py-32">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <h2 class="text-5xl md:text-7xl font-bold text-center mb-6 text-gray-900">
+                Entourage
+            </h2>
+            <div class="decorative-line mb-16">
+                <span>✦</span>
+            </div>
+            
+            <!-- Best Man & Maid of Honour -->
+            <div class="grid md:grid-cols-2 gap-10 mb-16 max-w-4xl mx-auto">
+                <div class="text-center p-10 bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl hover-lift">
+                    <div class="text-4xl mb-4">👔</div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Best Man</h3>
+                    <p class="elegant-script text-3xl text-gray-700">Paul Merry</p>
+                </div>
+                
+                <div class="text-center p-10 bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl hover-lift">
+                    <div class="text-4xl mb-4">👗</div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Maid of Honour</h3>
+                    <p class="elegant-script text-3xl text-gray-700">Sandra Gail M. Mijares</p>
+                </div>
+            </div>
+            
+            <!-- Groomsmen & Bridesmaids -->
+            <div class="grid md:grid-cols-2 gap-10 mb-16">
+                <div class="text-center p-8 bg-amber-50 rounded-3xl">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">Groomsmen</h3>
+                    <div class="space-y-3 text-lg text-gray-700">
+                        <p class="elegant-script text-xl">Karl Michael M. Rogon</p>
+                        <p class="elegant-script text-xl">Hil Bryle D. Marquina</p>
+                    </div>
+                </div>
+                
+                <div class="text-center p-8 bg-amber-50 rounded-3xl">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">Bridesmaids</h3>
+                    <div class="space-y-3 text-lg text-gray-700">
+                        <p class="elegant-script text-xl">Eumy Miqoe M. Rogon</p>
+                        <p class="elegant-script text-xl">Shanna Martina M. Rogon</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Special Roles -->
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="text-center p-6 bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl hover-lift">
+                    <div class="text-3xl mb-3">💕</div>
+                    <h4 class="text-lg font-bold mb-3 text-orange-600">To Carry Our Symbol of Love</h4>
+                    <p class="text-gray-700">Russel Andrei M. Pingkian</p>
+                </div>
+                
+                <div class="text-center p-6 bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl hover-lift">
+                    <div class="text-3xl mb-3">✝️</div>
+                    <h4 class="text-lg font-bold mb-3 text-orange-600">To Carry Our Symbol of Faith</h4>
+                    <p class="text-gray-700">Jack Daniel M. Pingkian</p>
+                </div>
+                
+                <div class="text-center p-6 bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl hover-lift">
+                    <div class="text-3xl mb-3">💍</div>
+                    <h4 class="text-lg font-bold mb-3 text-orange-600">To Carry Our Symbol of Treasure</h4>
+                    <p class="text-gray-700">Khen Matthew M. Pingkian</p>
+                </div>
+            </div>
+            
+            <!-- Flower Girls -->
+            <div class="text-center p-8 bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl mb-8 max-w-2xl mx-auto">
+                <div class="text-4xl mb-4">🌸</div>
+                <h3 class="text-2xl font-bold mb-6 text-gray-800">To Shower Our Aisle with Flowers</h3>
+                <div class="space-y-2 text-lg text-gray-700">
+                    <p class="elegant-script text-xl">Johanna Louise M. Sanchez</p>
+                    <p class="elegant-script text-xl">Calista D. Meyrick</p>
+                    <p class="elegant-script text-xl">Julia D. Marquina</p>
+                </div>
+            </div>
+            
+            <!-- Little Groom & Bride -->
+            <div class="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+                <div class="text-center p-8 bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl hover-lift">
+                    <div class="text-4xl mb-4">🤵</div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Little Groom</h3>
+                    <p class="elegant-script text-2xl text-gray-700">Kance Gabriel Marino</p>
+                </div>
+                
+                <div class="text-center p-8 bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl hover-lift">
+                    <div class="text-4xl mb-4">👰</div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Little Bride</h3>
+                    <p class="elegant-script text-2xl text-gray-700">Cattleyn Rose M. Pingkian</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Attire Guide Section -->
+    <section id="attire" class="gradient-warm py-24 md:py-32">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <h2 class="text-5xl md:text-7xl font-bold text-center mb-6 text-gray-900">
+                Attire Guide
+            </h2>
+            <div class="decorative-line mb-16">
+                <span>✦</span>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="attire-card bg-white bg-opacity-80 p-10 rounded-3xl text-center hover-lift shadow-lg">
+                    <div class="text-5xl mb-6">🤵</div>
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">Ninong</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        White or beige barong / long-sleeve formal attire
+                    </p>
+                </div>
+                
+                <div class="attire-card bg-white bg-opacity-80 p-10 rounded-3xl text-center hover-lift shadow-lg">
+                    <div class="text-5xl mb-6">👗</div>
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">Ninang</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        White, beige, or yellow Filipiniana / dress
+                    </p>
+                </div>
+                
+                <div class="attire-card bg-white bg-opacity-80 p-10 rounded-3xl text-center hover-lift shadow-lg">
+                    <div class="text-5xl mb-6">👔</div>
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">Guests</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Semi-formal attire in shades of:<br>
+                        <span class="font-semibold text-orange-600">
+                            Light yellow, mustard yellow, orange, and light brown
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gift Note Section -->
+    <section id="gifts" class="bg-white py-24 md:py-32">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-5xl md:text-7xl font-bold text-center mb-6 text-gray-900">
+                A Note on Gifts
+            </h2>
+            <div class="decorative-line mb-12">
+                <span>✦</span>
+            </div>
+            
+            <div class="gift-card bg-gradient-to-br from-amber-50 to-orange-50 p-12 rounded-3xl hover-lift">
+                <div class="elegant-script text-2xl md:text-3xl text-gray-700 leading-relaxed text-center space-y-4">
+                    <p>Should the thought of giving cross your mind,</p>
+                    <p>a gesture of support in the kindest kind,</p>
+                    <p>a gift of cash to aid our dreams, we say,</p>
+                    <p>would paint our smiles even brighter on our special day.</p>
+                </div>
+                <div class="heart-divider">❦</div>
+                <div class="text-center text-lg text-gray-600 leading-relaxed">
+                    <p>However, if you prefer to make your own purchase,</p>
+                    <p>feel free to surprise us with your choice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reminders Section -->
+    <section id="reminders" class="gradient-sunrise py-24 md:py-32">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-5xl md:text-7xl font-bold text-center mb-6 text-gray-900">
+                Reminders
+            </h2>
+            <div class="decorative-line mb-12">
+                <span>✦</span>
+            </div>
+            
+            <div class="bg-white bg-opacity-80 p-12 rounded-3xl shadow-xl">
+                <p class="text-xl md:text-2xl text-gray-700 leading-relaxed text-center mb-10 elegant-script">
+                    As our wedding day nears, we kindly ask for your help in making the most of every moment.
+                </p>
+                
+                <div class="space-y-8">
+                    <div class="reminder-item p-6 bg-amber-50 rounded-2xl hover-lift">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl">⏰</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-orange-600">Please Arrive Early</h3>
+                                <p class="text-gray-700 leading-relaxed">
+                                    We kindly request that you arrive a bit early so we can savour the day fully and start on time.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="reminder-item p-6 bg-amber-50 rounded-2xl hover-lift">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl">📵</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-orange-600">Unplugged Ceremony</h3>
+                                <p class="text-gray-700 leading-relaxed">
+                                    During the ceremony, we request that phones and cameras remain off. Our photographers and videographers will capture every memory — so you can be truly part of the magic without distractions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-10">
+                        <p class="elegant-script text-2xl md:text-3xl text-gray-800">
+                            We look forward to celebrating with you.
+                        </p>
+                        <div class="text-4xl mt-4 text-orange-500">❦</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- RSVP Section -->
-    <section id="rsvp" class="bg-white py-32 md:py-40">
+    <section id="rsvp" class="bg-white py-24 md:py-32">
         <div class="container mx-auto px-6 max-w-2xl">
             <div class="text-center mb-16">
                 <h2 class="text-5xl md:text-7xl font-bold mb-6 text-gray-900">
-                    Join Us
+                    RSVP
                 </h2>
-                <p class="text-xl text-gray-600">
+                <div class="decorative-line mb-6">
+                    <span>✦</span>
+                </div>
+                <p class="text-xl text-gray-600 elegant-script">
                     Please let us know if you can make it
                 </p>
             </div>
@@ -270,7 +667,7 @@
                         name="name" 
                         required
                         class="w-full px-6 py-4 border-2 border-gray-200 rounded-xl text-lg"
-                        placeholder="John Doe"
+                        placeholder="Juan Dela Cruz"
                     >
                 </div>
                 <div>
@@ -283,7 +680,20 @@
                         name="email" 
                         required
                         class="w-full px-6 py-4 border-2 border-gray-200 rounded-xl text-lg"
-                        placeholder="john@example.com"
+                        placeholder="juan@example.com"
+                    >
+                </div>
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2 text-lg" for="phone">
+                        Phone Number
+                    </label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        required
+                        class="w-full px-6 py-4 border-2 border-gray-200 rounded-xl text-lg"
+                        placeholder="+63 912 345 6789"
                     >
                 </div>
                 <div>
@@ -315,7 +725,7 @@
                                 class="peer sr-only"
                             >
                             <div class="cursor-pointer px-6 py-4 border-2 border-gray-200 rounded-xl text-center text-lg font-semibold peer-checked:border-orange-500 peer-checked:bg-orange-50 peer-checked:text-orange-600 transition-all">
-                                ✓ Yes, I'll be there!
+                                ✓ Joyfully Accept
                             </div>
                         </label>
                         <label class="relative">
@@ -327,7 +737,7 @@
                                 class="peer sr-only"
                             >
                             <div class="cursor-pointer px-6 py-4 border-2 border-gray-200 rounded-xl text-center text-lg font-semibold peer-checked:border-gray-400 peer-checked:bg-gray-50 peer-checked:text-gray-600 transition-all">
-                                ✗ Can't make it
+                                ✗ Regretfully Decline
                             </div>
                         </label>
                     </div>
@@ -341,7 +751,7 @@
                         name="message" 
                         rows="4"
                         class="w-full px-6 py-4 border-2 border-gray-200 rounded-xl text-lg"
-                        placeholder="Any dietary restrictions or special requests?"
+                        placeholder="Any dietary restrictions, special requests, or well wishes..."
                     ></textarea>
                 </div>
                 <button 
@@ -355,16 +765,19 @@
     </section>
 
     <!-- Footer -->
-    <footer class="gradient-sunrise py-16">
+    <footer class="gradient-sunset py-16">
         <div class="container mx-auto px-6 text-center">
-            <p class="text-2xl md:text-3xl font-bold text-gradient mb-4">
-                #AlexAndJamie2026
+            <p class="text-3xl md:text-4xl font-bold text-white mb-4 elegant-script">
+                Philip & Rita
             </p>
-            <p class="text-gray-600 text-lg">
+            <p class="text-xl text-white opacity-90 mb-2">
+                November 22, 2025
+            </p>
+            <p class="text-lg text-white opacity-80">
                 See you there! ✨
             </p>
-            <div class="mt-8 text-gray-500 text-sm">
-                <p>For questions, contact us at hello@alexandjamie.com</p>
+            <div class="mt-8 text-white text-sm opacity-75">
+                <p>For questions, please contact the families</p>
             </div>
         </div>
     </footer>
@@ -382,12 +795,21 @@
             ease: 'power4.out'
         });
 
-        gsap.from('.hero-content p', {
+        gsap.from('.hero-content .elegant-script', {
             opacity: 0,
             y: 50,
             duration: 1.2,
-            delay: 0.5,
+            delay: 0.3,
             ease: 'power3.out'
+        });
+
+        gsap.from('.hero-content div:not(.elegant-script)', {
+            opacity: 0,
+            y: 30,
+            duration: 1,
+            delay: 0.8,
+            ease: 'power3.out',
+            stagger: 0.2
         });
 
         // Parallax effect on hero background
@@ -402,29 +824,16 @@
             }
         });
 
-        // Story Section Animations
-        gsap.from('.story-text', {
+        // Parents Section
+        gsap.from('.parent-card', {
             opacity: 0,
-            x: 100,
-            duration: 1.2,
+            y: 60,
+            duration: 1,
+            stagger: 0.3,
             ease: 'power3.out',
             scrollTrigger: {
-                trigger: '#story',
+                trigger: '#parents',
                 start: 'top 70%',
-                end: 'top 30%',
-                toggleActions: 'play none none reverse'
-            }
-        });
-
-        gsap.from('.story-image', {
-            opacity: 0,
-            x: -100,
-            duration: 1.2,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: '#story',
-                start: 'top 70%',
-                end: 'top 30%',
                 toggleActions: 'play none none reverse'
             }
         });
@@ -439,23 +848,90 @@
             scrollTrigger: {
                 trigger: '#details',
                 start: 'top 70%',
-                end: 'top 30%',
                 toggleActions: 'play none none reverse'
             }
         });
 
-        // Gallery Items
-        gsap.from('.gallery-item', {
+        // Principal Sponsors
+        gsap.from('#principal-sponsors .sponsor-card', {
             opacity: 0,
-            y: 60,
-            scale: 0.9,
+            x: -50,
             duration: 0.8,
             stagger: 0.1,
             ease: 'power3.out',
             scrollTrigger: {
-                trigger: '#gallery',
+                trigger: '#principal-sponsors',
                 start: 'top 70%',
-                end: 'top 30%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        // Sponsors Section
+        gsap.from('#sponsors .sponsor-group', {
+            opacity: 0,
+            y: 60,
+            duration: 1,
+            stagger: 0.2,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '#sponsors',
+                start: 'top 70%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        // Entourage Section
+        gsap.from('#entourage > div > div', {
+            opacity: 0,
+            y: 50,
+            scale: 0.95,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '#entourage',
+                start: 'top 70%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        // Attire Guide
+        gsap.from('.attire-card', {
+            opacity: 0,
+            y: 60,
+            duration: 1,
+            stagger: 0.2,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '#attire',
+                start: 'top 70%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        // Gift Note
+        gsap.from('.gift-card', {
+            opacity: 0,
+            scale: 0.9,
+            duration: 1.2,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '#gifts',
+                start: 'top 70%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        // Reminders
+        gsap.from('.reminder-item', {
+            opacity: 0,
+            x: -50,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '#reminders',
+                start: 'top 70%',
                 toggleActions: 'play none none reverse'
             }
         });
@@ -470,7 +946,6 @@
             scrollTrigger: {
                 trigger: '#rsvp',
                 start: 'top 70%',
-                end: 'top 30%',
                 toggleActions: 'play none none reverse'
             }
         });
@@ -482,7 +957,7 @@
             const data = Object.fromEntries(formData);
             
             // Show success message
-            alert(`Thank you ${data.name}! Your RSVP has been received. We'll send you a confirmation email at ${data.email}.`);
+            alert(`Thank you ${data.name}! Your RSVP has been received. We'll send you a confirmation at ${data.email}.`);
             
             // Reset form
             event.target.reset();
