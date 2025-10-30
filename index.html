@@ -1466,13 +1466,10 @@
             animatePetal(petal) {
                 const duration = 15000 + Math.random() * 10000; // 15-25 seconds
                 const swingDuration = 3000 + Math.random() * 2000; // 3-5 seconds
-                const horizontalDrift = (Math.random() - 0.5) * 200;
                 
-                // Main falling animation
-                gsap.to(petal, {
+                // Store animation references on the petal
+                petal.fallAnimation = gsap.to(petal, {
                     y: window.innerHeight + 100,
-                    x: horizontalDrift,
-                    rotation: 360 + Math.random() * 720,
                     duration: duration / 1000,
                     ease: 'none',
                     onComplete: () => {
@@ -1485,7 +1482,7 @@
                 });
                 
                 // Swinging motion (like being blown by wind)
-                gsap.to(petal, {
+                petal.swingAnimation = gsap.to(petal, {
                     x: '+=60',
                     duration: swingDuration / 1000,
                     repeat: -1,
@@ -1494,21 +1491,21 @@
                 });
                 
                 // Random rotation wobble
-                gsap.to(petal, {
-                    rotation: '+=30',
-                    duration: 2,
+                petal.rotateAnimation = gsap.to(petal, {
+                    rotation: '+=360',
+                    duration: 8 + Math.random() * 4,
                     repeat: -1,
-                    yoyo: true,
-                    ease: 'sine.inOut'
+                    ease: 'none'
                 });
             }
             
             addInteraction(petal) {
-                let isInteracting = false;
+                const self = this;
+                let lastInteraction = 0;
                 
                 const moveAway = (e) => {
-                    if (isInteracting) return;
-                    isInteracting = true;
+                    const now = Date.now();
+                    if (now - lastInteraction < 500) return; // Throttle interactions
                     
                     const rect = petal.getBoundingClientRect();
                     const centerX = rect.left + rect.width / 2;
@@ -1528,59 +1525,77 @@
                     const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
                     
                     if (distance < 100) {
+                        lastInteraction = now;
+                        
+                        // Get current transform values
+                        const currentTransform = gsap.getProperty(petal, 'transform');
+                        const currentX = gsap.getProperty(petal, 'x');
+                        const currentY = gsap.getProperty(petal, 'y');
+                        const currentRotation = gsap.getProperty(petal, 'rotation');
+                        
+                        // Kill only the swing animation temporarily
+                        if (petal.swingAnimation) {
+                            petal.swingAnimation.pause();
+                        }
+                        
                         const pushDistance = 150;
                         const angle = Math.atan2(deltaY, deltaX);
                         const pushX = Math.cos(angle) * pushDistance;
                         const pushY = Math.sin(angle) * pushDistance;
                         
+                        // Push the petal away
                         gsap.to(petal, {
-                            x: '+=' + pushX,
-                            y: '+=' + pushY,
-                            rotation: '+=' + (Math.random() * 180 - 90),
-                            duration: 0.5,
+                            x: currentX + pushX,
+                            y: currentY + pushY,
+                            rotation: currentRotation + (Math.random() * 180 - 90),
+                            duration: 0.4,
                             ease: 'power2.out',
                             onComplete: () => {
-                                isInteracting = false;
+                                // Resume swing animation from new position
+                                if (petal.swingAnimation) {
+                                    petal.swingAnimation.resume();
+                                }
                             }
                         });
-                    } else {
-                        isInteracting = false;
+                        
+                        // Continue falling animation doesn't need to be restarted
+                        // It continues from the new position automatically
                     }
                 };
                 
-                petal.addEventListener('mousemove', moveAway);
-                petal.addEventListener('touchmove', moveAway);
-                
-                // Also detect nearby mouse/touch
-                document.addEventListener('mousemove', (e) => {
+                // Global mouse/touch detection for proximity
+                const checkProximity = (e) => {
+                    if (!petal || !petal.parentNode) return;
+                    
                     const rect = petal.getBoundingClientRect();
                     const centerX = rect.left + rect.width / 2;
                     const centerY = rect.top + rect.height / 2;
+                    
+                    let clientX, clientY;
+                    if (e.touches && e.touches[0]) {
+                        clientX = e.touches[0].clientX;
+                        clientY = e.touches[0].clientY;
+                    } else {
+                        clientX = e.clientX;
+                        clientY = e.clientY;
+                    }
+                    
                     const distance = Math.sqrt(
-                        Math.pow(centerX - e.clientX, 2) + 
-                        Math.pow(centerY - e.clientY, 2)
+                        Math.pow(centerX - clientX, 2) + 
+                        Math.pow(centerY - clientY, 2)
                     );
                     
                     if (distance < 80) {
                         moveAway(e);
                     }
-                });
+                };
                 
-                document.addEventListener('touchmove', (e) => {
-                    if (e.touches && e.touches[0]) {
-                        const rect = petal.getBoundingClientRect();
-                        const centerX = rect.left + rect.width / 2;
-                        const centerY = rect.top + rect.height / 2;
-                        const distance = Math.sqrt(
-                            Math.pow(centerX - e.touches[0].clientX, 2) + 
-                            Math.pow(centerY - e.touches[0].clientY, 2)
-                        );
-                        
-                        if (distance < 80) {
-                            moveAway(e);
-                        }
-                    }
-                });
+                // Store handlers for cleanup
+                petal._mouseMoveHandler = checkProximity;
+                petal._touchMoveHandler = checkProximity;
+                
+                document.addEventListener('mousemove', petal._mouseMoveHandler);
+                document.addEventListener('touchmove', petal._touchMoveHandler, { passive: true });
             }
         }
         
