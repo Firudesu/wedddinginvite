@@ -186,10 +186,14 @@
         
         /* Mobile-specific sponsor card improvements */
         @media (max-width: 768px) {
+            #principal-sponsors .grid {
+                padding: 0 2rem;
+            }
+            
             .sponsor-card {
-                padding: 1.5rem 2rem !important;
+                padding: 1.5rem 1rem !important;
                 margin: 0 auto;
-                max-width: 90%;
+                max-width: 85%;
             }
             
             .sponsor-card > div {
@@ -201,8 +205,8 @@
                 font-size: 1rem !important; /* 16px - larger for readability */
                 line-height: 1.5 !important;
                 letter-spacing: -0.02em;
-                padding: 0.25rem 0.5rem !important;
-                max-width: 95% !important;
+                padding: 0.25rem !important;
+                max-width: 100% !important;
                 margin: 0 auto;
             }
             
@@ -212,10 +216,14 @@
         }
         
         @media (max-width: 640px) {
+            #principal-sponsors .grid {
+                padding: 0 1.5rem;
+            }
+            
             .sponsor-card {
-                padding: 1.25rem 1.5rem !important;
+                padding: 1.25rem 0.75rem !important;
                 margin: 0 auto;
-                max-width: 95%;
+                max-width: 90%;
             }
             
             .sponsor-card > div {
@@ -231,9 +239,13 @@
         }
         
         @media (max-width: 480px) {
+            #principal-sponsors .grid {
+                padding: 0 1rem;
+            }
+            
             .sponsor-card {
-                padding: 1rem 1.25rem !important;
-                max-width: 100%;
+                padding: 1rem 0.5rem !important;
+                max-width: 95%;
                 margin: 0 auto;
             }
             
@@ -246,6 +258,10 @@
         }
         
         @media (max-width: 420px) {
+            .sponsor-card {
+                max-width: 100%;
+            }
+            
             .sponsor-card p {
                 font-size: 0.8125rem !important; /* 13px for CMF Nothing Phone */
                 max-width: 100% !important;
@@ -347,6 +363,53 @@
             opacity: 0.1;
         }
         
+        /* Floating Flower Petals */
+        .flower-petal {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            pointer-events: auto;
+            z-index: 9999;
+            opacity: 0.7;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            will-change: transform;
+        }
+        
+        .flower-petal img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        @keyframes petalFall {
+            0% {
+                transform: translateY(-50px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes petalSwing {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-20px);
+            }
+            75% {
+                transform: translateX(20px);
+            }
+        }
+        
         /* Church photo styling */
         .church-photo-container img {
             border-radius: 1rem;
@@ -435,8 +498,8 @@
         <div class="section-decoration" style="bottom: 10%; left: 5%; font-size: 8rem;">💕</div>
         
         <div class="container mx-auto px-6 max-w-5xl relative z-10">
-            <div class="text-center mb-20">
-                <h2 class="section-title text-5xl md:text-7xl font-normal mb-6 wedding-font" style="background: linear-gradient(135deg, #F59E0B 0%, #FB923C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: 0.05em;">
+            <div class="text-center mb-20 px-4">
+                <h2 class="section-title text-5xl md:text-7xl font-normal mb-8 pt-4 wedding-font" style="background: linear-gradient(135deg, #F59E0B 0%, #FB923C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: 0.05em; line-height: 1.3;">
                     Pardoe – Marino Nuptials
                 </h2>
                 <div class="decorative-line">
@@ -1344,6 +1407,186 @@
                 end: 'bottom top',
                 scrub: 1
             }
+        });
+    </script>
+
+    <!-- Floating Flower Petals Script -->
+    <script>
+        // Floating Flower Petals Animation
+        class FloatingPetals {
+            constructor() {
+                this.petals = [];
+                this.maxPetals = 15;
+                this.init();
+            }
+            
+            init() {
+                // Create petals periodically
+                setInterval(() => {
+                    if (this.petals.length < this.maxPetals) {
+                        this.createPetal();
+                    }
+                }, 2000);
+                
+                // Initial petals
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => this.createPetal(), i * 500);
+                }
+            }
+            
+            createPetal() {
+                const petal = document.createElement('div');
+                petal.className = 'flower-petal';
+                
+                const img = document.createElement('img');
+                img.src = 'flower.png';
+                img.alt = 'flower petal';
+                petal.appendChild(img);
+                
+                // Random starting position
+                const startX = Math.random() * window.innerWidth;
+                petal.style.left = startX + 'px';
+                petal.style.top = '-50px';
+                
+                // Random size variation
+                const size = 20 + Math.random() * 25;
+                petal.style.width = size + 'px';
+                petal.style.height = size + 'px';
+                
+                document.body.appendChild(petal);
+                this.petals.push(petal);
+                
+                // Animate the petal
+                this.animatePetal(petal);
+                
+                // Add mouse/touch interaction
+                this.addInteraction(petal);
+            }
+            
+            animatePetal(petal) {
+                const duration = 15000 + Math.random() * 10000; // 15-25 seconds
+                const swingDuration = 3000 + Math.random() * 2000; // 3-5 seconds
+                const horizontalDrift = (Math.random() - 0.5) * 200;
+                
+                // Main falling animation
+                gsap.to(petal, {
+                    y: window.innerHeight + 100,
+                    x: horizontalDrift,
+                    rotation: 360 + Math.random() * 720,
+                    duration: duration / 1000,
+                    ease: 'none',
+                    onComplete: () => {
+                        petal.remove();
+                        const index = this.petals.indexOf(petal);
+                        if (index > -1) {
+                            this.petals.splice(index, 1);
+                        }
+                    }
+                });
+                
+                // Swinging motion (like being blown by wind)
+                gsap.to(petal, {
+                    x: '+=60',
+                    duration: swingDuration / 1000,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'sine.inOut'
+                });
+                
+                // Random rotation wobble
+                gsap.to(petal, {
+                    rotation: '+=30',
+                    duration: 2,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'sine.inOut'
+                });
+            }
+            
+            addInteraction(petal) {
+                let isInteracting = false;
+                
+                const moveAway = (e) => {
+                    if (isInteracting) return;
+                    isInteracting = true;
+                    
+                    const rect = petal.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    
+                    let clientX, clientY;
+                    if (e.touches && e.touches[0]) {
+                        clientX = e.touches[0].clientX;
+                        clientY = e.touches[0].clientY;
+                    } else {
+                        clientX = e.clientX;
+                        clientY = e.clientY;
+                    }
+                    
+                    const deltaX = centerX - clientX;
+                    const deltaY = centerY - clientY;
+                    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                    
+                    if (distance < 100) {
+                        const pushDistance = 150;
+                        const angle = Math.atan2(deltaY, deltaX);
+                        const pushX = Math.cos(angle) * pushDistance;
+                        const pushY = Math.sin(angle) * pushDistance;
+                        
+                        gsap.to(petal, {
+                            x: '+=' + pushX,
+                            y: '+=' + pushY,
+                            rotation: '+=' + (Math.random() * 180 - 90),
+                            duration: 0.5,
+                            ease: 'power2.out',
+                            onComplete: () => {
+                                isInteracting = false;
+                            }
+                        });
+                    } else {
+                        isInteracting = false;
+                    }
+                };
+                
+                petal.addEventListener('mousemove', moveAway);
+                petal.addEventListener('touchmove', moveAway);
+                
+                // Also detect nearby mouse/touch
+                document.addEventListener('mousemove', (e) => {
+                    const rect = petal.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    const distance = Math.sqrt(
+                        Math.pow(centerX - e.clientX, 2) + 
+                        Math.pow(centerY - e.clientY, 2)
+                    );
+                    
+                    if (distance < 80) {
+                        moveAway(e);
+                    }
+                });
+                
+                document.addEventListener('touchmove', (e) => {
+                    if (e.touches && e.touches[0]) {
+                        const rect = petal.getBoundingClientRect();
+                        const centerX = rect.left + rect.width / 2;
+                        const centerY = rect.top + rect.height / 2;
+                        const distance = Math.sqrt(
+                            Math.pow(centerX - e.touches[0].clientX, 2) + 
+                            Math.pow(centerY - e.touches[0].clientY, 2)
+                        );
+                        
+                        if (distance < 80) {
+                            moveAway(e);
+                        }
+                    }
+                });
+            }
+        }
+        
+        // Initialize floating petals after page load
+        window.addEventListener('load', () => {
+            new FloatingPetals();
         });
     </script>
 
