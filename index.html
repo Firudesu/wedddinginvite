@@ -253,6 +253,22 @@
                 conic-gradient(from 0deg, #FCD34D 0deg, transparent 20deg, transparent 40deg, #FB923C 60deg, transparent 80deg, transparent 100deg, #F59E0B 120deg, transparent 140deg, transparent 160deg, #FCD34D 180deg, transparent 200deg, transparent 220deg, #FB923C 240deg, transparent 260deg, transparent 280deg, #F59E0B 300deg, transparent 320deg, transparent 340deg, #FCD34D 360deg);
             opacity: 0.1;
         }
+        
+        /* Church photo styling */
+        .church-photo-container img {
+            border-radius: 1rem;
+            box-shadow: 
+                0 20px 60px rgba(251, 146, 60, 0.4),
+                0 0 0 5px #FB923C,
+                0 0 0 10px #FCD34D;
+        }
+        
+        .church-photo-container img:hover {
+            box-shadow: 
+                0 25px 70px rgba(251, 146, 60, 0.6),
+                0 0 0 5px #F59E0B,
+                0 0 0 10px #FB923C;
+        }
     </style>
 </head>
 <body class="bg-gradient-warm">
@@ -352,21 +368,48 @@
             <h2 class="section-title text-6xl md:text-8xl font-bold text-center mb-24 text-white drop-shadow-lg">
                 Event Details
             </h2>
-            <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-                <div class="detail-card bg-white p-14 rounded-3xl text-center hover-lift shadow-2xl transform">
-                    <div class="text-7xl mb-8 float-animation">💒</div>
-                    <h3 class="text-4xl md:text-5xl font-bold mb-8 text-gray-900">Ceremony</h3>
-                    <div class="space-y-4 text-xl text-gray-700">
-                        <p class="font-bold text-3xl text-orange-600">St. Joseph Cathedral</p>
-                        <p class="text-2xl">Romblon, Romblon</p>
-                        <div class="decorative-line my-6">
-                            <span>❦</span>
+            
+            <!-- Ceremony Section with Photo -->
+            <div class="max-w-6xl mx-auto mb-16">
+                <div class="detail-card bg-white p-8 md:p-12 rounded-3xl hover-lift shadow-2xl">
+                    <div class="grid md:grid-cols-2 gap-10 items-center">
+                        <!-- Church Photo -->
+                        <div class="church-photo-container order-2 md:order-1">
+                            <div class="relative group">
+                                <img 
+                                    src="right-side-view.jpg" 
+                                    alt="St. Joseph Cathedral - Right Side View" 
+                                    class="w-full h-auto rounded-2xl shadow-2xl transform transition-all duration-500 group-hover:scale-105"
+                                    style="border: 5px solid transparent; border-image: linear-gradient(135deg, #FCD34D, #FB923C, #F59E0B) 1; box-shadow: 0 20px 60px rgba(251, 146, 60, 0.4);"
+                                />
+                                <div class="absolute inset-0 rounded-2xl bg-gradient-to-t from-orange-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <!-- Decorative corner accents -->
+                                <div class="absolute -top-3 -left-3 w-12 h-12 border-t-4 border-l-4 border-orange-500 rounded-tl-2xl"></div>
+                                <div class="absolute -bottom-3 -right-3 w-12 h-12 border-b-4 border-r-4 border-orange-500 rounded-br-2xl"></div>
+                            </div>
+                            <p class="text-center mt-4 text-gray-600 italic text-sm">St. Joseph Cathedral, Romblon</p>
                         </div>
-                        <p class="text-3xl font-bold text-gray-900">2:00 PM</p>
-                        <p class="text-2xl font-semibold">November 22, 2025</p>
+                        
+                        <!-- Ceremony Details -->
+                        <div class="ceremony-details text-center order-1 md:order-2">
+                            <div class="text-7xl mb-8 float-animation">💒</div>
+                            <h3 class="text-4xl md:text-5xl font-bold mb-8 text-gray-900">Ceremony</h3>
+                            <div class="space-y-4 text-xl text-gray-700">
+                                <p class="font-bold text-3xl text-orange-600">St. Joseph Cathedral</p>
+                                <p class="text-2xl">Romblon, Romblon</p>
+                                <div class="decorative-line my-6">
+                                    <span>❦</span>
+                                </div>
+                                <p class="text-3xl font-bold text-gray-900">2:00 PM</p>
+                                <p class="text-2xl font-semibold">November 22, 2025</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
+            </div>
+            
+            <!-- Reception Section -->
+            <div class="max-w-4xl mx-auto">
                 <div class="detail-card bg-white p-14 rounded-3xl text-center hover-lift shadow-2xl transform">
                     <div class="text-7xl mb-8 float-animation" style="animation-delay: 0.5s;">🥂</div>
                     <h3 class="text-4xl md:text-5xl font-bold mb-8 text-gray-900">Reception</h3>
@@ -921,17 +964,46 @@
             }
         });
 
-        gsap.from('#details .detail-card', {
+        // Church photo - slide in from left
+        gsap.from('#details .church-photo-container', {
             opacity: 0,
-            y: 120,
-            scale: 0.7,
-            rotation: (index) => index % 2 === 0 ? -20 : 20,
+            x: -200,
+            rotation: -15,
             duration: 1.3,
-            stagger: 0.3,
-            ease: 'elastic.out(1, 0.6)',
+            ease: 'back.out(1.5)',
             scrollTrigger: {
                 trigger: '#details',
                 start: 'top 65%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        // Ceremony details - slide in from right
+        gsap.from('#details .ceremony-details', {
+            opacity: 0,
+            x: 200,
+            rotation: 15,
+            duration: 1.3,
+            ease: 'back.out(1.5)',
+            scrollTrigger: {
+                trigger: '#details',
+                start: 'top 65%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        // Reception card
+        gsap.from('#details .detail-card:not(:first-child)', {
+            opacity: 0,
+            y: 120,
+            scale: 0.7,
+            rotation: 10,
+            duration: 1.3,
+            delay: 0.3,
+            ease: 'elastic.out(1, 0.6)',
+            scrollTrigger: {
+                trigger: '#details',
+                start: 'top 60%',
                 toggleActions: 'play none none reverse'
             }
         });
