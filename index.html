@@ -187,93 +187,121 @@
         /* Mobile-specific sponsor card improvements */
         @media (max-width: 768px) {
             #principal-sponsors .container {
-                padding-left: 3rem !important;
-                padding-right: 3rem !important;
+                padding-left: 4rem !important;
+                padding-right: 4rem !important;
             }
             
             #principal-sponsors .grid {
-                padding: 0 1rem;
+                padding: 0 0.5rem;
                 max-width: 100%;
+                gap: 1rem !important;
+                justify-content: center;
             }
             
             .sponsor-card {
-                padding: 1.5rem 0.5rem !important;
+                padding: 1.25rem 0.25rem !important;
                 margin: 0 auto;
-                max-width: 100%;
-                width: 100%;
+                max-width: 90%;
+                width: 90%;
             }
             
             .sponsor-card > div {
-                padding: 0.25rem;
+                padding: 0.125rem;
                 max-width: 100%;
             }
             
             .sponsor-card p {
-                font-size: 0.9375rem !important; /* 15px */
-                line-height: 1.5 !important;
+                font-size: 0.875rem !important; /* 14px */
+                line-height: 1.4 !important;
                 letter-spacing: -0.02em;
-                padding: 0.125rem !important;
+                padding: 0.0625rem !important;
                 max-width: 100% !important;
                 margin: 0 auto;
                 text-align: center;
+                word-break: break-word;
             }
             
             .sponsor-card span {
-                font-size: 1.125rem !important;
+                font-size: 1rem !important;
             }
         }
         
         @media (max-width: 640px) {
             #principal-sponsors .container {
-                padding-left: 2.5rem !important;
-                padding-right: 2.5rem !important;
+                padding-left: 3.5rem !important;
+                padding-right: 3.5rem !important;
+            }
+            
+            #principal-sponsors .grid {
+                gap: 0.75rem !important;
             }
             
             .sponsor-card {
-                padding: 1.25rem 0.5rem !important;
+                padding: 1rem 0.25rem !important;
+                max-width: 85%;
+                width: 85%;
             }
             
             .sponsor-card p {
-                font-size: 0.875rem !important; /* 14px */
-                padding: 0.125rem !important;
+                font-size: 0.8125rem !important; /* 13px */
+                padding: 0.0625rem !important;
             }
         }
         
         @media (max-width: 480px) {
             #principal-sponsors .container {
-                padding-left: 2rem !important;
-                padding-right: 2rem !important;
+                padding-left: 3rem !important;
+                padding-right: 3rem !important;
+            }
+            
+            #principal-sponsors .grid {
+                gap: 0.5rem !important;
             }
             
             .sponsor-card {
-                padding: 1rem 0.5rem !important;
+                padding: 0.875rem 0.25rem !important;
+                max-width: 80%;
+                width: 80%;
             }
             
             .sponsor-card p {
-                font-size: 0.8125rem !important; /* 13px */
+                font-size: 0.75rem !important; /* 12px */
                 font-weight: 600 !important;
             }
         }
         
         @media (max-width: 420px) {
             #principal-sponsors .container {
-                padding-left: 1.75rem !important;
-                padding-right: 1.75rem !important;
+                padding-left: 2.75rem !important;
+                padding-right: 2.75rem !important;
+            }
+            
+            .sponsor-card {
+                max-width: 75%;
+                width: 75%;
+                padding: 0.75rem 0.2rem !important;
             }
             
             .sponsor-card p {
-                font-size: 0.75rem !important; /* 12px for CMF Nothing Phone */
+                font-size: 0.6875rem !important; /* 11px for CMF Nothing Phone */
+                line-height: 1.35 !important;
             }
         }
         
         @media (max-width: 375px) {
             #principal-sponsors .container {
-                padding-left: 1.5rem !important;
-                padding-right: 1.5rem !important;
+                padding-left: 2.5rem !important;
+                padding-right: 2.5rem !important;
+            }
+            
+            .sponsor-card {
+                max-width: 70%;
+                width: 70%;
             }
             
             .sponsor-card p {
-                font-size: 0.6875rem !important; /* 11px for smallest phones */
+                font-size: 0.625rem !important; /* 10px for smallest phones */
+                line-height: 1.3 !important;
             }
         }
         
@@ -1099,20 +1127,32 @@
         const playIcon = document.getElementById('play-icon');
         const volumeIcon = document.getElementById('volume-icon');
         
-        // Set volume to 50% and auto-start
+        // Set volume to 50%
         bgMusic.volume = 0.5;
         
-        // Try to auto-play immediately
-        window.addEventListener('load', () => {
-            bgMusic.play().catch(e => {
-                console.log('Autoplay blocked by browser. Will start on first interaction.');
-                // Fallback: start on first interaction
-                ['click', 'touchstart', 'scroll'].forEach(event => {
-                    document.addEventListener(event, () => {
-                        bgMusic.play();
-                    }, { once: true });
+        // AGGRESSIVE auto-start - try IMMEDIATELY
+        let musicStarted = false;
+        const startMusic = () => {
+            if (!musicStarted) {
+                bgMusic.play().then(() => {
+                    console.log('Music started!');
+                    musicStarted = true;
+                    playIcon.textContent = '⏸️';
+                }).catch(e => {
+                    console.log('Autoplay blocked, waiting for interaction...');
                 });
-            });
+            }
+        };
+        
+        // Try immediately on script load
+        startMusic();
+        
+        // Try on page load
+        window.addEventListener('load', startMusic);
+        
+        // Try on ANY user interaction
+        ['click', 'touchstart', 'scroll', 'keydown', 'mousemove'].forEach(event => {
+            document.addEventListener(event, startMusic, { once: true });
         });
         
         function togglePlayPause() {
@@ -1586,8 +1626,8 @@
                 const startLeft = parseFloat(petal.style.left);
                 const fallDistance = pageHeight - startTop + 100;
                 
-                // MUCH slower duration for gentle floating - 40-60 seconds!
-                const duration = 40 + Math.random() * 20;
+                // ULTRA slow duration for dreamy floating - 60-90 seconds!
+                const duration = 60 + Math.random() * 30;
                 
                 // Gentle horizontal drift
                 const horizontalDrift = (Math.random() - 0.5) * 200;
@@ -1683,7 +1723,7 @@
                                     document.documentElement.scrollHeight
                                 );
                                 const remainingDistance = pageHeight - newTop;
-                                const remainingDuration = (remainingDistance / pageHeight) * 50; // Much slower
+                                const remainingDuration = (remainingDistance / pageHeight) * 75; // Ultra slow for dreamy effect
                                 
                                 // Restart gentle swaying
                                 const swayTimeline = gsap.timeline({ repeat: -1 });
