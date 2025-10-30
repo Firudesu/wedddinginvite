@@ -18,6 +18,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
+        /* Custom Wedding Font */
+        @font-face {
+            font-family: 'Wedding Dress';
+            src: url('Wedding Dress.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -35,8 +44,12 @@
         }
         
         .elegant-script {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 500;
+            font-family: 'Wedding Dress', 'Cormorant Garamond', serif;
+            font-weight: 400;
+        }
+        
+        .wedding-font {
+            font-family: 'Wedding Dress', cursive;
         }
         
         .gradient-sunset {
@@ -381,8 +394,8 @@
                 <div class="hero-subtitle elegant-script text-3xl md:text-5xl text-white mb-8 opacity-90">
                     Together with their families
                 </div>
-                <h1 class="hero-title text-7xl md:text-9xl lg:text-[11rem] font-bold text-white mb-8 leading-tight tracking-tight drop-shadow-2xl">
-                    Philip <span class="elegant-script text-6xl md:text-8xl">&</span> Rita
+                <h1 class="hero-title wedding-font text-8xl md:text-9xl lg:text-[12rem] font-normal text-white mb-8 leading-tight drop-shadow-2xl" style="letter-spacing: 0.05em;">
+                    Philip <span class="elegant-script text-7xl md:text-9xl">&</span> Rita
                 </h1>
                 <div class="hero-description elegant-script text-2xl md:text-4xl text-white mb-6 opacity-95 leading-relaxed max-w-3xl mx-auto">
                     request the honour of your presence<br>
@@ -419,7 +432,7 @@
         
         <div class="container mx-auto px-6 max-w-5xl relative z-10">
             <div class="text-center mb-20">
-                <h2 class="section-title text-5xl md:text-7xl font-bold text-gradient mb-6">
+                <h2 class="section-title text-5xl md:text-7xl font-normal mb-6 wedding-font" style="background: linear-gradient(135deg, #F59E0B 0%, #FB923C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: 0.05em;">
                     Pardoe – Marino Nuptials
                 </h2>
                 <div class="decorative-line">
@@ -931,7 +944,7 @@
         <div class="section-decoration rotate-slow" style="bottom: 20%; right: 10%; font-size: 8rem; opacity: 0.2; animation-delay: 2s;">💫</div>
         
         <div class="container mx-auto px-6 text-center relative z-10">
-            <p class="text-4xl md:text-5xl font-bold text-white mb-6 elegant-script">
+            <p class="text-5xl md:text-6xl font-normal text-white mb-6 wedding-font" style="letter-spacing: 0.05em;">
                 Philip & Rita
             </p>
             <div class="text-5xl mb-6">
