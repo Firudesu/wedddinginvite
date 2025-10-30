@@ -187,71 +187,75 @@
         /* Mobile-specific sponsor card improvements */
         @media (max-width: 768px) {
             .sponsor-card {
-                padding: 1rem 2rem !important;
-                margin: 0 1rem;
+                padding: 1.5rem 2rem !important;
+                margin: 0 auto;
+                max-width: 90%;
             }
             
             .sponsor-card > div {
-                padding: 0 1.5rem;
+                padding: 0.5rem;
                 max-width: 100%;
             }
             
             .sponsor-card p {
-                font-size: 0.8125rem !important; /* 13px */
+                font-size: 1rem !important; /* 16px - larger for readability */
                 line-height: 1.5 !important;
-                letter-spacing: -0.03em;
-                padding: 0 1.25rem !important;
-                max-width: 75% !important;
+                letter-spacing: -0.02em;
+                padding: 0.25rem 0.5rem !important;
+                max-width: 95% !important;
                 margin: 0 auto;
             }
             
             .sponsor-card span {
-                font-size: 1rem !important;
+                font-size: 1.25rem !important;
             }
         }
         
         @media (max-width: 640px) {
             .sponsor-card {
-                padding: 0.875rem 1.75rem !important;
-                margin: 0 1rem;
+                padding: 1.25rem 1.5rem !important;
+                margin: 0 auto;
+                max-width: 95%;
             }
             
             .sponsor-card > div {
-                padding: 0 1.25rem;
+                padding: 0.5rem;
             }
             
             .sponsor-card p {
-                font-size: 0.75rem !important; /* 12px for standard phones */
-                max-width: 70% !important;
-                padding: 0 1rem !important;
+                font-size: 0.9375rem !important; /* 15px for standard phones */
+                max-width: 100% !important;
+                padding: 0.25rem !important;
                 line-height: 1.5 !important;
             }
         }
         
         @media (max-width: 480px) {
             .sponsor-card {
-                padding: 0.75rem 1.5rem !important;
+                padding: 1rem 1.25rem !important;
+                max-width: 100%;
+                margin: 0 auto;
             }
             
             .sponsor-card p {
-                font-size: 0.6875rem !important; /* 11px for small phones */
+                font-size: 0.875rem !important; /* 14px for small phones */
                 font-weight: 600 !important;
-                max-width: 65% !important;
-                padding: 0 0.75rem !important;
+                max-width: 100% !important;
+                padding: 0.25rem !important;
             }
         }
         
         @media (max-width: 420px) {
             .sponsor-card p {
-                font-size: 0.625rem !important; /* 10px for CMF Nothing Phone size */
-                max-width: 60% !important;
+                font-size: 0.8125rem !important; /* 13px for CMF Nothing Phone */
+                max-width: 100% !important;
             }
         }
         
         @media (max-width: 375px) {
             .sponsor-card p {
-                font-size: 0.5625rem !important; /* 9px for smallest phones */
-                max-width: 55% !important;
+                font-size: 0.75rem !important; /* 12px for smallest phones */
+                max-width: 100% !important;
             }
         }
         
@@ -458,96 +462,6 @@
                         <p class="font-semibold">Rogelio M. Marino Sr.</p>
                         <p class="text-orange-600 text-4xl">❦</p>
                         <p class="font-semibold">Marilyn M. Marino</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Event Details Section -->
-    <section id="details" class="gradient-tropical py-32 md:py-40 relative">
-        <div class="section-decoration rotate-slow" style="top: 10%; left: 3%; font-size: 10rem;">🎊</div>
-        <div class="section-decoration rotate-slow" style="bottom: 10%; right: 3%; font-size: 10rem; animation-delay: 3s;">🎉</div>
-        
-        <div class="container mx-auto px-6 relative z-10">
-            <h2 class="section-title text-6xl md:text-8xl font-bold text-center mb-24 text-white drop-shadow-lg">
-                Event Details
-            </h2>
-            
-            <!-- Ceremony Section with Photo -->
-            <div class="max-w-6xl mx-auto mb-16">
-                <div class="detail-card bg-white p-8 md:p-12 rounded-3xl hover-lift shadow-2xl">
-                    <div class="grid md:grid-cols-2 gap-10 items-center">
-                        <!-- Church Photo -->
-                        <div class="church-photo-container order-2 md:order-1">
-                            <div class="relative group">
-                                <img 
-                                    src="right-side-view.jpg" 
-                                    alt="St. Joseph Cathedral - Right Side View" 
-                                    class="w-full h-auto rounded-2xl shadow-2xl transform transition-all duration-500 group-hover:scale-105"
-                                    style="border: 5px solid transparent; border-image: linear-gradient(135deg, #FCD34D, #FB923C, #F59E0B) 1; box-shadow: 0 20px 60px rgba(251, 146, 60, 0.4);"
-                                />
-                                <div class="absolute inset-0 rounded-2xl bg-gradient-to-t from-orange-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                <!-- Decorative corner accents -->
-                                <div class="absolute -top-3 -left-3 w-12 h-12 border-t-4 border-l-4 border-orange-500 rounded-tl-2xl"></div>
-                                <div class="absolute -bottom-3 -right-3 w-12 h-12 border-b-4 border-r-4 border-orange-500 rounded-br-2xl"></div>
-                            </div>
-                            <p class="text-center mt-4 text-gray-600 italic text-sm">St. Joseph Cathedral, Romblon</p>
-                        </div>
-                        
-                        <!-- Ceremony Details -->
-                        <div class="ceremony-details text-center order-1 md:order-2">
-                            <div class="text-7xl mb-8 float-animation">💒</div>
-                            <h3 class="text-4xl md:text-5xl font-bold mb-8 text-gray-900">Ceremony</h3>
-                            <div class="space-y-4 text-xl text-gray-700">
-                                <p class="font-bold text-3xl text-orange-600">St. Joseph Cathedral</p>
-                                <p class="text-2xl">Romblon, Romblon</p>
-                                <div class="decorative-line my-6">
-                                    <span>❦</span>
-                                </div>
-                                <p class="text-3xl font-bold text-gray-900">2:00 PM</p>
-                                <p class="text-2xl font-semibold">November 22, 2025</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Reception Section with Photo -->
-            <div class="max-w-6xl mx-auto">
-                <div class="detail-card bg-white p-8 md:p-12 rounded-3xl hover-lift shadow-2xl">
-                    <div class="grid md:grid-cols-2 gap-10 items-center">
-                        <!-- Reception Details -->
-                        <div class="reception-details text-center order-1">
-                            <div class="text-7xl mb-8 float-animation" style="animation-delay: 0.5s;">🥂</div>
-                            <h3 class="text-4xl md:text-5xl font-bold mb-8 text-gray-900">Reception</h3>
-                            <div class="space-y-4 text-xl text-gray-700">
-                                <p class="font-bold text-3xl text-orange-600">Dream Paradise Mountain Resort</p>
-                                <p class="text-2xl">Mapula, Romblon, Romblon</p>
-                                <div class="decorative-line my-6">
-                                    <span>❦</span>
-                                </div>
-                                <p class="text-2xl italic elegant-script">Following the ceremony</p>
-                                <p class="text-lg font-semibold text-gray-600">Dinner • Dancing • Celebration</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Resort Photo -->
-                        <div class="resort-photo-container order-2">
-                            <div class="relative group">
-                                <img 
-                                    src="dream-paradise-mountain.jpg" 
-                                    alt="Dream Paradise Mountain Resort" 
-                                    class="w-full h-auto rounded-2xl shadow-2xl transform transition-all duration-500 group-hover:scale-105"
-                                    style="border: 5px solid transparent; border-image: linear-gradient(135deg, #FCD34D, #FB923C, #F59E0B) 1; box-shadow: 0 20px 60px rgba(251, 146, 60, 0.4);"
-                                />
-                                <div class="absolute inset-0 rounded-2xl bg-gradient-to-t from-orange-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                <!-- Decorative corner accents -->
-                                <div class="absolute -top-3 -left-3 w-12 h-12 border-t-4 border-l-4 border-orange-500 rounded-tl-2xl"></div>
-                                <div class="absolute -bottom-3 -right-3 w-12 h-12 border-b-4 border-r-4 border-orange-500 rounded-br-2xl"></div>
-                            </div>
-                            <p class="text-center mt-4 text-gray-600 italic text-sm">Dream Paradise Mountain Resort, Mapula</p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -763,7 +677,7 @@
             <!-- Special Roles -->
             <div class="grid md:grid-cols-3 gap-8 mb-12">
                 <div class="special-role fiesta-card text-center p-8 rounded-2xl hover-lift shadow-xl">
-                    <div class="text-5xl mb-4 float-animation">💕</div>
+                    <div class="text-5xl mb-4 float-animation">💍</div>
                     <h4 class="text-xl font-bold mb-4 text-orange-600">Symbol of Love</h4>
                     <p class="text-lg text-gray-700 font-semibold">Russel Andrei M. Pingkian</p>
                 </div>
@@ -775,7 +689,7 @@
                 </div>
                 
                 <div class="special-role fiesta-card text-center p-8 rounded-2xl hover-lift shadow-xl">
-                    <div class="text-5xl mb-4 float-animation" style="animation-delay: 1s;">💍</div>
+                    <div class="text-5xl mb-4 float-animation" style="animation-delay: 1s;">🪙</div>
                     <h4 class="text-xl font-bold mb-4 text-orange-600">Symbol of Treasure</h4>
                     <p class="text-lg text-gray-700 font-semibold">Khen Matthew M. Pingkian</p>
                 </div>
@@ -804,6 +718,96 @@
                     <div class="text-6xl mb-6 float-animation" style="animation-delay: 0.4s;">👰</div>
                     <h3 class="text-3xl font-bold mb-6 text-gray-800">Little Bride</h3>
                     <p class="elegant-script text-3xl text-orange-600 font-bold">Cattleyn Rose M. Pingkian</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Details Section -->
+    <section id="details" class="gradient-tropical py-32 md:py-40 relative">
+        <div class="section-decoration rotate-slow" style="top: 10%; left: 3%; font-size: 10rem;">🎊</div>
+        <div class="section-decoration rotate-slow" style="bottom: 10%; right: 3%; font-size: 10rem; animation-delay: 3s;">🎉</div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="section-title text-6xl md:text-8xl font-bold text-center mb-24 text-white drop-shadow-lg">
+                Event Details
+            </h2>
+            
+            <!-- Ceremony Section with Photo -->
+            <div class="max-w-6xl mx-auto mb-16">
+                <div class="detail-card bg-white p-8 md:p-12 rounded-3xl hover-lift shadow-2xl">
+                    <div class="grid md:grid-cols-2 gap-10 items-center">
+                        <!-- Church Photo -->
+                        <div class="church-photo-container order-2 md:order-1">
+                            <div class="relative group">
+                                <img 
+                                    src="right-side-view.jpg" 
+                                    alt="St. Joseph Cathedral - Right Side View" 
+                                    class="w-full h-auto rounded-2xl shadow-2xl transform transition-all duration-500 group-hover:scale-105"
+                                    style="border: 5px solid transparent; border-image: linear-gradient(135deg, #FCD34D, #FB923C, #F59E0B) 1; box-shadow: 0 20px 60px rgba(251, 146, 60, 0.4);"
+                                />
+                                <div class="absolute inset-0 rounded-2xl bg-gradient-to-t from-orange-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <!-- Decorative corner accents -->
+                                <div class="absolute -top-3 -left-3 w-12 h-12 border-t-4 border-l-4 border-orange-500 rounded-tl-2xl"></div>
+                                <div class="absolute -bottom-3 -right-3 w-12 h-12 border-b-4 border-r-4 border-orange-500 rounded-br-2xl"></div>
+                            </div>
+                            <p class="text-center mt-4 text-gray-600 italic text-sm">St. Joseph Cathedral, Romblon</p>
+                        </div>
+                        
+                        <!-- Ceremony Details -->
+                        <div class="ceremony-details text-center order-1 md:order-2">
+                            <div class="text-7xl mb-8 float-animation">💒</div>
+                            <h3 class="text-4xl md:text-5xl font-bold mb-8 text-gray-900">Ceremony</h3>
+                            <div class="space-y-4 text-xl text-gray-700">
+                                <p class="font-bold text-3xl text-orange-600">St. Joseph Cathedral</p>
+                                <p class="text-2xl">Romblon, Romblon</p>
+                                <div class="decorative-line my-6">
+                                    <span>❦</span>
+                                </div>
+                                <p class="text-3xl font-bold text-gray-900">2:00 PM</p>
+                                <p class="text-2xl font-semibold">November 22, 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Reception Section with Photo -->
+            <div class="max-w-6xl mx-auto">
+                <div class="detail-card bg-white p-8 md:p-12 rounded-3xl hover-lift shadow-2xl">
+                    <div class="grid md:grid-cols-2 gap-10 items-center">
+                        <!-- Reception Details -->
+                        <div class="reception-details text-center order-1">
+                            <div class="text-7xl mb-8 float-animation" style="animation-delay: 0.5s;">🥂</div>
+                            <h3 class="text-4xl md:text-5xl font-bold mb-8 text-gray-900">Reception</h3>
+                            <div class="space-y-4 text-xl text-gray-700">
+                                <p class="font-bold text-3xl text-orange-600">Dream Paradise Mountain Resort</p>
+                                <p class="text-2xl">Mapula, Romblon, Romblon</p>
+                                <div class="decorative-line my-6">
+                                    <span>❦</span>
+                                </div>
+                                <p class="text-2xl italic elegant-script">Following the ceremony</p>
+                                <p class="text-lg font-semibold text-gray-600">Dinner • Dancing • Celebration</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Resort Photo -->
+                        <div class="resort-photo-container order-2">
+                            <div class="relative group">
+                                <img 
+                                    src="dream-paradise-mountain.jpg" 
+                                    alt="Dream Paradise Mountain Resort" 
+                                    class="w-full h-auto rounded-2xl shadow-2xl transform transition-all duration-500 group-hover:scale-105"
+                                    style="border: 5px solid transparent; border-image: linear-gradient(135deg, #FCD34D, #FB923C, #F59E0B) 1; box-shadow: 0 20px 60px rgba(251, 146, 60, 0.4);"
+                                />
+                                <div class="absolute inset-0 rounded-2xl bg-gradient-to-t from-orange-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <!-- Decorative corner accents -->
+                                <div class="absolute -top-3 -left-3 w-12 h-12 border-t-4 border-l-4 border-orange-500 rounded-tl-2xl"></div>
+                                <div class="absolute -bottom-3 -right-3 w-12 h-12 border-b-4 border-r-4 border-orange-500 rounded-br-2xl"></div>
+                            </div>
+                            <p class="text-center mt-4 text-gray-600 italic text-sm">Dream Paradise Mountain Resort, Mapula</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
