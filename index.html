@@ -174,57 +174,71 @@
         /* Mobile-specific sponsor card improvements */
         @media (max-width: 768px) {
             .sponsor-card {
-                padding: 1.25rem 1.5rem !important;
-                margin: 0 0.5rem;
+                padding: 1rem 2rem !important;
+                margin: 0 1rem;
             }
             
             .sponsor-card > div {
-                padding: 0 1rem;
+                padding: 0 1.5rem;
+                max-width: 100%;
             }
             
             .sponsor-card p {
-                font-size: 0.875rem !important; /* 14px */
-                line-height: 1.4 !important;
-                letter-spacing: -0.02em;
-                padding: 0 1rem !important;
-                max-width: 90% !important;
+                font-size: 0.8125rem !important; /* 13px */
+                line-height: 1.5 !important;
+                letter-spacing: -0.03em;
+                padding: 0 1.25rem !important;
+                max-width: 75% !important;
                 margin: 0 auto;
             }
             
             .sponsor-card span {
-                font-size: 1.125rem !important; /* Smaller separator on mobile */
+                font-size: 1rem !important;
             }
         }
         
         @media (max-width: 640px) {
             .sponsor-card {
-                padding: 1rem 1.25rem !important;
+                padding: 0.875rem 1.75rem !important;
+                margin: 0 1rem;
+            }
+            
+            .sponsor-card > div {
+                padding: 0 1.25rem;
             }
             
             .sponsor-card p {
-                font-size: 0.8125rem !important; /* 13px for standard phones */
-                max-width: 85% !important;
-                padding: 0 0.75rem !important;
+                font-size: 0.75rem !important; /* 12px for standard phones */
+                max-width: 70% !important;
+                padding: 0 1rem !important;
+                line-height: 1.5 !important;
             }
         }
         
         @media (max-width: 480px) {
             .sponsor-card {
-                padding: 0.875rem 1rem !important;
+                padding: 0.75rem 1.5rem !important;
             }
             
             .sponsor-card p {
-                font-size: 0.75rem !important; /* 12px for small phones */
+                font-size: 0.6875rem !important; /* 11px for small phones */
                 font-weight: 600 !important;
-                max-width: 80% !important;
-                padding: 0 0.5rem !important;
+                max-width: 65% !important;
+                padding: 0 0.75rem !important;
+            }
+        }
+        
+        @media (max-width: 420px) {
+            .sponsor-card p {
+                font-size: 0.625rem !important; /* 10px for CMF Nothing Phone size */
+                max-width: 60% !important;
             }
         }
         
         @media (max-width: 375px) {
             .sponsor-card p {
-                font-size: 0.6875rem !important; /* 11px for smallest phones */
-                max-width: 75% !important;
+                font-size: 0.5625rem !important; /* 9px for smallest phones */
+                max-width: 55% !important;
             }
         }
         
@@ -532,7 +546,7 @@
         <div class="section-decoration" style="top: 8%; right: 10%; font-size: 7rem;">🌟</div>
         <div class="section-decoration" style="bottom: 15%; left: 8%; font-size: 7rem;">⭐</div>
         
-        <div class="container mx-auto px-6 sm:px-8 md:px-6 max-w-6xl relative z-10" style="position: relative; z-index: 10;">
+        <div class="container mx-auto px-8 sm:px-10 md:px-6 max-w-6xl relative z-10" style="position: relative; z-index: 10;">
             <h2 class="section-title text-4xl sm:text-5xl md:text-8xl font-bold text-center mb-10 text-gray-900">
                 Principal Sponsors
             </h2>
@@ -540,7 +554,7 @@
                 <span>✦</span>
             </div>
             
-            <div class="grid gap-5 md:gap-8 max-w-5xl mx-auto px-2 sm:px-0">
+            <div class="grid gap-5 md:gap-8 max-w-5xl mx-auto px-4 sm:px-0">
                 <div class="sponsor-card p-4 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
                     <div class="flex flex-col items-center justify-center gap-1.5 text-center">
                         <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mr. Eugene O. Madeja</p>
