@@ -636,7 +636,7 @@
                 <span>✦</span>
             </div>
             
-            <div class="grid gap-5 md:gap-8 max-w-5xl mx-auto px-4 sm:px-0">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 max-w-5xl mx-auto px-4 sm:px-0">
                 <div class="sponsor-card p-4 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
                     <div class="flex flex-col items-center justify-center gap-1.5 text-center">
                         <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mr. Eugene O. Madeja</p>
@@ -1378,10 +1378,11 @@
             }
         });
 
-        gsap.from('#principal-sponsors .sponsor-card', {
-            x: (index) => index % 2 === 0 ? -150 : 150,
-            scale: 0.8,
-            rotation: (index) => index % 2 === 0 ? -10 : 10,
+        const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+        const sponsorAnim = {
+            x: (index) => isDesktop ? 0 : (index % 2 === 0 ? -150 : 150),
+            scale: 0.9,
+            rotation: (index) => isDesktop ? 0 : (index % 2 === 0 ? -10 : 10),
             duration: 0.9,
             stagger: 0.08,
             ease: 'back.out(1.5)',
@@ -1390,7 +1391,8 @@
                 start: 'top 70%',
                 toggleActions: 'play none none reverse'
             }
-        });
+        };
+        gsap.from('#principal-sponsors .sponsor-card', sponsorAnim);
 
         // Sponsors Section - Bounce in!
         gsap.from('#sponsors .section-title', {
