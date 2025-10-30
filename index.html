@@ -166,24 +166,47 @@
             font-weight: 700 !important;
             word-wrap: break-word;
             overflow-wrap: break-word;
+            hyphens: auto;
             max-width: 100%;
+            padding: 0 0.5rem;
         }
         
         /* Mobile-specific sponsor card improvements */
         @media (max-width: 768px) {
             .sponsor-card {
-                padding: 1.5rem !important;
+                padding: 1rem !important;
+                margin: 0 0.25rem;
             }
             
             .sponsor-card p {
-                font-size: 1.125rem !important; /* 18px */
-                line-height: 1.4 !important;
+                font-size: 0.95rem !important; /* 15.2px - smaller for mobile */
+                line-height: 1.35 !important;
+                letter-spacing: -0.01em;
+                padding: 0 0.25rem;
+            }
+            
+            .sponsor-card span {
+                font-size: 1.25rem !important; /* Smaller separator on mobile */
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .sponsor-card p {
+                font-size: 0.875rem !important; /* 14px for standard phones */
+                max-width: calc(100vw - 4rem);
             }
         }
         
         @media (max-width: 480px) {
             .sponsor-card p {
-                font-size: 1rem !important; /* 16px for very small phones */
+                font-size: 0.8125rem !important; /* 13px for very small phones */
+                font-weight: 600 !important;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .sponsor-card p {
+                font-size: 0.75rem !important; /* 12px for smallest phones */
             }
         }
         
@@ -499,100 +522,100 @@
                 <span>✦</span>
             </div>
             
-            <div class="grid gap-6 md:gap-8 max-w-5xl mx-auto">
-                <div class="sponsor-card p-6 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
-                    <div class="flex flex-col items-center justify-center gap-2 text-center">
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Mr. Eugene O. Madeja</p>
-                        <span class="text-orange-600 text-2xl md:text-4xl font-bold">—</span>
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Mrs. Rowena M. Madeja</p>
+            <div class="grid gap-5 md:gap-8 max-w-5xl mx-auto">
+                <div class="sponsor-card p-4 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
+                    <div class="flex flex-col items-center justify-center gap-1.5 text-center">
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mr. Eugene O. Madeja</p>
+                        <span class="text-orange-600 text-lg md:text-4xl font-bold">—</span>
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mrs. Rowena M. Madeja</p>
                     </div>
                 </div>
                 
-                <div class="sponsor-card p-6 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
-                    <div class="flex flex-col items-center justify-center gap-2 text-center">
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Mr. Juan M. Mayor</p>
-                        <span class="text-orange-600 text-2xl md:text-4xl font-bold">—</span>
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Mrs. Ana Liza M. Mayor</p>
+                <div class="sponsor-card p-4 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
+                    <div class="flex flex-col items-center justify-center gap-1.5 text-center">
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mr. Juan M. Mayor</p>
+                        <span class="text-orange-600 text-lg md:text-4xl font-bold">—</span>
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mrs. Ana Liza M. Mayor</p>
                     </div>
                 </div>
                 
-                <div class="sponsor-card p-6 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
-                    <div class="flex flex-col items-center justify-center gap-2 text-center">
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Mr. Salvo C. Lim</p>
-                        <span class="text-orange-600 text-2xl md:text-4xl font-bold">—</span>
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Mrs. Maria Fe C. Manzano</p>
+                <div class="sponsor-card p-4 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
+                    <div class="flex flex-col items-center justify-center gap-1.5 text-center">
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mr. Salvo C. Lim</p>
+                        <span class="text-orange-600 text-lg md:text-4xl font-bold">—</span>
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mrs. Maria Fe C. Manzano</p>
                     </div>
                 </div>
                 
-                <div class="sponsor-card p-6 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
-                    <div class="flex flex-col items-center justify-center gap-2 text-center">
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Mr. Ricky M. Indonila</p>
-                        <span class="text-orange-600 text-2xl md:text-4xl font-bold">—</span>
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Mrs. Almi M. Prestosa</p>
+                <div class="sponsor-card p-4 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
+                    <div class="flex flex-col items-center justify-center gap-1.5 text-center">
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mr. Ricky M. Indonila</p>
+                        <span class="text-orange-600 text-lg md:text-4xl font-bold">—</span>
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mrs. Almi M. Prestosa</p>
                     </div>
                 </div>
                 
-                <div class="sponsor-card p-6 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
-                    <div class="flex flex-col items-center justify-center gap-2 text-center">
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Mr. Reynaldo Fajarda</p>
-                        <span class="text-orange-600 text-2xl md:text-4xl font-bold">—</span>
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Mrs. Maria Lourdes M. Fajarda</p>
+                <div class="sponsor-card p-4 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
+                    <div class="flex flex-col items-center justify-center gap-1.5 text-center">
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mr. Reynaldo Fajarda</p>
+                        <span class="text-orange-600 text-lg md:text-4xl font-bold">—</span>
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mrs. Maria Lourdes M. Fajarda</p>
                     </div>
                 </div>
                 
-                <div class="sponsor-card p-6 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
-                    <div class="flex flex-col items-center justify-center gap-2 text-center">
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Mr. Joseph F. Mazo</p>
-                        <span class="text-orange-600 text-2xl md:text-4xl font-bold">—</span>
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Mrs. Armi F. Mazo</p>
+                <div class="sponsor-card p-4 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
+                    <div class="flex flex-col items-center justify-center gap-1.5 text-center">
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mr. Joseph F. Mazo</p>
+                        <span class="text-orange-600 text-lg md:text-4xl font-bold">—</span>
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mrs. Armi F. Mazo</p>
                     </div>
                 </div>
                 
-                <div class="sponsor-card p-6 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
-                    <div class="flex flex-col items-center justify-center gap-2 text-center">
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Mr. Hilarion M. Marquina Jr.</p>
-                        <span class="text-orange-600 text-2xl md:text-4xl font-bold">—</span>
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Mrs. Marivic M. Mijares</p>
+                <div class="sponsor-card p-4 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
+                    <div class="flex flex-col items-center justify-center gap-1.5 text-center">
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mr. Hilarion M. Marquina Jr.</p>
+                        <span class="text-orange-600 text-lg md:text-4xl font-bold">—</span>
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mrs. Marivic M. Mijares</p>
                     </div>
                 </div>
                 
-                <div class="sponsor-card p-6 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
-                    <div class="flex flex-col items-center justify-center gap-2 text-center">
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Mr. Eduardo Adarlo</p>
-                        <span class="text-orange-600 text-2xl md:text-4xl font-bold">—</span>
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Mrs. Janet N. Escalada</p>
+                <div class="sponsor-card p-4 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
+                    <div class="flex flex-col items-center justify-center gap-1.5 text-center">
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mr. Eduardo Adarlo</p>
+                        <span class="text-orange-600 text-lg md:text-4xl font-bold">—</span>
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mrs. Janet N. Escalada</p>
                     </div>
                 </div>
                 
-                <div class="sponsor-card p-6 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
-                    <div class="flex flex-col items-center justify-center gap-2 text-center">
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Mr. Romeo E. Capalad</p>
-                        <span class="text-orange-600 text-2xl md:text-4xl font-bold">—</span>
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Mrs. Erna S. Capalad</p>
+                <div class="sponsor-card p-4 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
+                    <div class="flex flex-col items-center justify-center gap-1.5 text-center">
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mr. Romeo E. Capalad</p>
+                        <span class="text-orange-600 text-lg md:text-4xl font-bold">—</span>
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mrs. Erna S. Capalad</p>
                     </div>
                 </div>
                 
-                <div class="sponsor-card p-6 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
-                    <div class="flex flex-col items-center justify-center gap-2 text-center">
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Mr. Heval M. Magracia</p>
-                        <span class="text-orange-600 text-2xl md:text-4xl font-bold">—</span>
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Mrs. Rowena M. Magracia</p>
+                <div class="sponsor-card p-4 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
+                    <div class="flex flex-col items-center justify-center gap-1.5 text-center">
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mr. Heval M. Magracia</p>
+                        <span class="text-orange-600 text-lg md:text-4xl font-bold">—</span>
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mrs. Rowena M. Magracia</p>
                     </div>
                 </div>
                 
-                <div class="sponsor-card p-6 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
-                    <div class="flex flex-col items-center justify-center gap-2 text-center">
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Hon. Lydon Molino</p>
-                        <span class="text-orange-600 text-2xl md:text-4xl font-bold">—</span>
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Mrs. Osie M. Rguas</p>
+                <div class="sponsor-card p-4 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
+                    <div class="flex flex-col items-center justify-center gap-1.5 text-center">
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Hon. Lydon Molino</p>
+                        <span class="text-orange-600 text-lg md:text-4xl font-bold">—</span>
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mrs. Osie M. Rguas</p>
                     </div>
                 </div>
                 
-                <div class="sponsor-card p-6 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
-                    <div class="flex flex-col items-center justify-center gap-2 text-center">
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Mr. Timothy T. Sejane</p>
-                        <span class="text-orange-600 text-2xl md:text-4xl font-bold">—</span>
-                        <p class="text-lg sm:text-xl md:text-3xl font-extrabold text-gray-900 leading-tight">Gov. Trina Alejandra F. Fabic</p>
+                <div class="sponsor-card p-4 md:p-10 rounded-2xl shadow-xl" style="background: white; border: 3px solid #FB923C;">
+                    <div class="flex flex-col items-center justify-center gap-1.5 text-center">
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Mr. Timothy T. Sejane</p>
+                        <span class="text-orange-600 text-lg md:text-4xl font-bold">—</span>
+                        <p class="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold md:font-extrabold text-gray-900 leading-tight">Gov. Trina Alejandra F. Fabic</p>
                     </div>
                 </div>
             </div>
