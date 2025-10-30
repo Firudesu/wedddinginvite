@@ -495,7 +495,7 @@
 <body class="bg-gradient-warm">
 
     <!-- Background Music -->
-    <audio id="bg-music" loop>
+    <audio id="bg-music" loop autoplay>
         <source src="Ruelle - I Get to Love You (Lyrics) [TubeRipper.cc].mp3" type="audio/mpeg">
     </audio>
 
@@ -1099,23 +1099,20 @@
         const playIcon = document.getElementById('play-icon');
         const volumeIcon = document.getElementById('volume-icon');
         
-        // Set volume to 50%
+        // Set volume to 50% and auto-start
         bgMusic.volume = 0.5;
         
-        // Auto-play music when page loads (with user interaction)
-        let musicStarted = false;
-        const startMusic = () => {
-            if (!musicStarted) {
-                bgMusic.play().catch(e => {
-                    console.log('Autoplay prevented. User must interact first.');
+        // Try to auto-play immediately
+        window.addEventListener('load', () => {
+            bgMusic.play().catch(e => {
+                console.log('Autoplay blocked by browser. Will start on first interaction.');
+                // Fallback: start on first interaction
+                ['click', 'touchstart', 'scroll'].forEach(event => {
+                    document.addEventListener(event, () => {
+                        bgMusic.play();
+                    }, { once: true });
                 });
-                musicStarted = true;
-            }
-        };
-        
-        // Try to start on first user interaction
-        ['click', 'touchstart', 'scroll'].forEach(event => {
-            document.addEventListener(event, startMusic, { once: true });
+            });
         });
         
         function togglePlayPause() {
@@ -1579,7 +1576,6 @@
             }
             
             animatePetal(petal) {
-                const duration = 15000 + Math.random() * 10000; // 15-25 seconds
                 const pageHeight = Math.max(
                     document.body.scrollHeight,
                     document.body.offsetHeight,
@@ -1587,21 +1583,37 @@
                 );
                 
                 const startTop = parseFloat(petal.style.top);
-                const endTop = pageHeight + 100;
-                const horizontalDrift = (Math.random() - 0.5) * 300;
+                const startLeft = parseFloat(petal.style.left);
+                const fallDistance = pageHeight - startTop + 100;
                 
-                // Store initial position
-                petal.targetY = endTop;
-                petal.driftX = horizontalDrift;
+                // MUCH slower duration for gentle floating - 40-60 seconds!
+                const duration = 40 + Math.random() * 20;
                 
-                // Main falling animation using absolute top value
+                // Gentle horizontal drift
+                const horizontalDrift = (Math.random() - 0.5) * 200;
+                
+                // Gentle swaying motion
+                const swayTimeline = gsap.timeline({ repeat: -1 });
+                swayTimeline.to(petal, {
+                    left: startLeft + horizontalDrift - 40,
+                    duration: 4 + Math.random() * 2,
+                    ease: 'sine.inOut'
+                }).to(petal, {
+                    left: startLeft + horizontalDrift + 40,
+                    duration: 4 + Math.random() * 2,
+                    ease: 'sine.inOut'
+                });
+                
+                petal.swayAnimation = swayTimeline;
+                
+                // Main falling animation - very slow and gentle
                 petal.fallAnimation = gsap.to(petal, {
-                    top: endTop,
-                    left: parseFloat(petal.style.left) + horizontalDrift,
-                    rotation: 360 + Math.random() * 720,
-                    duration: duration / 1000,
+                    top: pageHeight + 100,
+                    rotation: 180 + Math.random() * 360, // Gentle rotation
+                    duration: duration,
                     ease: 'none',
                     onComplete: () => {
+                        if (petal.swayAnimation) petal.swayAnimation.kill();
                         petal.remove();
                         const index = this.petals.indexOf(petal);
                         if (index > -1) {
@@ -1646,6 +1658,7 @@
                         
                         // KILL all animations completely
                         if (petal.fallAnimation) petal.fallAnimation.kill();
+                        if (petal.swayAnimation) petal.swayAnimation.kill();
                         
                         const pushDistance = 150;
                         const angle = Math.atan2(deltaY, deltaX);
@@ -1661,23 +1674,38 @@
                             left: newLeft,
                             top: newTop,
                             rotation: newRotation,
-                            duration: 0.4,
+                            duration: 0.6,
                             ease: 'power2.out',
                             onComplete: () => {
-                                // Restart fall animation from NEW position
+                                // Restart animations from NEW position
                                 const pageHeight = Math.max(
                                     document.body.scrollHeight,
                                     document.documentElement.scrollHeight
                                 );
                                 const remainingDistance = pageHeight - newTop;
-                                const remainingDuration = (remainingDistance / pageHeight) * 20;
+                                const remainingDuration = (remainingDistance / pageHeight) * 50; // Much slower
                                 
+                                // Restart gentle swaying
+                                const swayTimeline = gsap.timeline({ repeat: -1 });
+                                swayTimeline.to(petal, {
+                                    left: newLeft - 40,
+                                    duration: 4 + Math.random() * 2,
+                                    ease: 'sine.inOut'
+                                }).to(petal, {
+                                    left: newLeft + 40,
+                                    duration: 4 + Math.random() * 2,
+                                    ease: 'sine.inOut'
+                                });
+                                petal.swayAnimation = swayTimeline;
+                                
+                                // Restart falling
                                 petal.fallAnimation = gsap.to(petal, {
                                     top: pageHeight + 100,
-                                    rotation: newRotation + 360,
-                                    duration: Math.max(remainingDuration, 5),
+                                    rotation: newRotation + 180,
+                                    duration: Math.max(remainingDuration, 10),
                                     ease: 'none',
                                     onComplete: () => {
+                                        if (petal.swayAnimation) petal.swayAnimation.kill();
                                         petal.remove();
                                         const index = self.petals.indexOf(petal);
                                         if (index > -1) {
