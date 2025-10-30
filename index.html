@@ -186,92 +186,94 @@
         
         /* Mobile-specific sponsor card improvements */
         @media (max-width: 768px) {
+            #principal-sponsors .container {
+                padding-left: 3rem !important;
+                padding-right: 3rem !important;
+            }
+            
             #principal-sponsors .grid {
-                padding: 0 2rem;
+                padding: 0 1rem;
+                max-width: 100%;
             }
             
             .sponsor-card {
-                padding: 1.5rem 1rem !important;
+                padding: 1.5rem 0.5rem !important;
                 margin: 0 auto;
-                max-width: 85%;
+                max-width: 100%;
+                width: 100%;
             }
             
             .sponsor-card > div {
-                padding: 0.5rem;
+                padding: 0.25rem;
                 max-width: 100%;
             }
             
             .sponsor-card p {
-                font-size: 1rem !important; /* 16px - larger for readability */
+                font-size: 0.9375rem !important; /* 15px */
                 line-height: 1.5 !important;
                 letter-spacing: -0.02em;
-                padding: 0.25rem !important;
+                padding: 0.125rem !important;
                 max-width: 100% !important;
                 margin: 0 auto;
+                text-align: center;
             }
             
             .sponsor-card span {
-                font-size: 1.25rem !important;
+                font-size: 1.125rem !important;
             }
         }
         
         @media (max-width: 640px) {
-            #principal-sponsors .grid {
-                padding: 0 1.5rem;
+            #principal-sponsors .container {
+                padding-left: 2.5rem !important;
+                padding-right: 2.5rem !important;
             }
             
             .sponsor-card {
-                padding: 1.25rem 0.75rem !important;
-                margin: 0 auto;
-                max-width: 90%;
-            }
-            
-            .sponsor-card > div {
-                padding: 0.5rem;
+                padding: 1.25rem 0.5rem !important;
             }
             
             .sponsor-card p {
-                font-size: 0.9375rem !important; /* 15px for standard phones */
-                max-width: 100% !important;
-                padding: 0.25rem !important;
-                line-height: 1.5 !important;
+                font-size: 0.875rem !important; /* 14px */
+                padding: 0.125rem !important;
             }
         }
         
         @media (max-width: 480px) {
-            #principal-sponsors .grid {
-                padding: 0 1rem;
+            #principal-sponsors .container {
+                padding-left: 2rem !important;
+                padding-right: 2rem !important;
             }
             
             .sponsor-card {
                 padding: 1rem 0.5rem !important;
-                max-width: 95%;
-                margin: 0 auto;
             }
             
             .sponsor-card p {
-                font-size: 0.875rem !important; /* 14px for small phones */
+                font-size: 0.8125rem !important; /* 13px */
                 font-weight: 600 !important;
-                max-width: 100% !important;
-                padding: 0.25rem !important;
             }
         }
         
         @media (max-width: 420px) {
-            .sponsor-card {
-                max-width: 100%;
+            #principal-sponsors .container {
+                padding-left: 1.75rem !important;
+                padding-right: 1.75rem !important;
             }
             
             .sponsor-card p {
-                font-size: 0.8125rem !important; /* 13px for CMF Nothing Phone */
-                max-width: 100% !important;
+                font-size: 0.75rem !important; /* 12px for CMF Nothing Phone */
             }
         }
         
         @media (max-width: 375px) {
+            #principal-sponsors .container {
+                padding-left: 1.5rem !important;
+                padding-right: 1.5rem !important;
+            }
+            
             .sponsor-card p {
-                font-size: 0.75rem !important; /* 12px for smallest phones */
-                max-width: 100% !important;
+                font-size: 0.6875rem !important; /* 11px for smallest phones */
             }
         }
         
@@ -281,6 +283,54 @@
             font-size: 2.5rem;
             color: #F59E0B;
             animation: heart-beat 1.5s ease-in-out infinite;
+        }
+        
+        /* Music Controls */
+        .music-controls {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 10000;
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .music-btn {
+            background: linear-gradient(135deg, #F59E0B 0%, #FB923C 100%);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.25rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(251, 146, 60, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .music-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(251, 146, 60, 0.6);
+        }
+        
+        .music-btn:active {
+            transform: scale(0.95);
+        }
+        
+        @media (max-width: 768px) {
+            .music-controls {
+                top: 1rem;
+                right: 1rem;
+            }
+            
+            .music-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.125rem;
+            }
         }
         
         @keyframes heart-beat {
@@ -365,13 +415,12 @@
         
         /* Floating Flower Petals */
         .flower-petal {
-            position: fixed;
+            position: absolute;
             width: 30px;
             height: 30px;
             pointer-events: auto;
             z-index: 9999;
             opacity: 0.7;
-            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
             will-change: transform;
         }
         
@@ -444,6 +493,21 @@
     </style>
 </head>
 <body class="bg-gradient-warm">
+
+    <!-- Background Music -->
+    <audio id="bg-music" loop>
+        <source src="Ruelle - I Get to Love You (Lyrics) [TubeRipper.cc].mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Music Controls -->
+    <div class="music-controls">
+        <button class="music-btn" id="play-pause-btn" onclick="togglePlayPause()" title="Play/Pause Music">
+            <span id="play-icon">▶️</span>
+        </button>
+        <button class="music-btn" id="mute-btn" onclick="toggleMute()" title="Mute/Unmute">
+            <span id="volume-icon">🔊</span>
+        </button>
+    </div>
 
     <!-- Hero Section -->
     <section id="hero" class="gradient-sunset min-h-screen flex items-center justify-center relative">
@@ -1030,6 +1094,56 @@
     </footer>
 
     <script>
+        // Background Music Controls
+        const bgMusic = document.getElementById('bg-music');
+        const playIcon = document.getElementById('play-icon');
+        const volumeIcon = document.getElementById('volume-icon');
+        
+        // Set volume to 50%
+        bgMusic.volume = 0.5;
+        
+        // Auto-play music when page loads (with user interaction)
+        let musicStarted = false;
+        const startMusic = () => {
+            if (!musicStarted) {
+                bgMusic.play().catch(e => {
+                    console.log('Autoplay prevented. User must interact first.');
+                });
+                musicStarted = true;
+            }
+        };
+        
+        // Try to start on first user interaction
+        ['click', 'touchstart', 'scroll'].forEach(event => {
+            document.addEventListener(event, startMusic, { once: true });
+        });
+        
+        function togglePlayPause() {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                playIcon.textContent = '⏸️';
+            } else {
+                bgMusic.pause();
+                playIcon.textContent = '▶️';
+            }
+        }
+        
+        function toggleMute() {
+            bgMusic.muted = !bgMusic.muted;
+            volumeIcon.textContent = bgMusic.muted ? '🔇' : '🔊';
+        }
+        
+        // Update play icon when music state changes
+        bgMusic.addEventListener('play', () => {
+            playIcon.textContent = '⏸️';
+        });
+        
+        bgMusic.addEventListener('pause', () => {
+            playIcon.textContent = '▶️';
+        });
+    </script>
+
+    <script>
         // Register GSAP ScrollTrigger plugin
         gsap.registerPlugin(ScrollTrigger);
 
@@ -1443,10 +1557,11 @@
                 img.alt = 'flower petal';
                 petal.appendChild(img);
                 
-                // Random starting position
+                // Random starting position at top of PAGE (not viewport)
                 const startX = Math.random() * window.innerWidth;
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
                 petal.style.left = startX + 'px';
-                petal.style.top = '-50px';
+                petal.style.top = (currentScroll - 50) + 'px';
                 
                 // Random size variation
                 const size = 20 + Math.random() * 25;
@@ -1465,11 +1580,25 @@
             
             animatePetal(petal) {
                 const duration = 15000 + Math.random() * 10000; // 15-25 seconds
-                const swingDuration = 3000 + Math.random() * 2000; // 3-5 seconds
+                const pageHeight = Math.max(
+                    document.body.scrollHeight,
+                    document.body.offsetHeight,
+                    document.documentElement.scrollHeight
+                );
                 
-                // Store animation references on the petal
+                const startTop = parseFloat(petal.style.top);
+                const endTop = pageHeight + 100;
+                const horizontalDrift = (Math.random() - 0.5) * 300;
+                
+                // Store initial position
+                petal.targetY = endTop;
+                petal.driftX = horizontalDrift;
+                
+                // Main falling animation using absolute top value
                 petal.fallAnimation = gsap.to(petal, {
-                    y: window.innerHeight + 100,
+                    top: endTop,
+                    left: parseFloat(petal.style.left) + horizontalDrift,
+                    rotation: 360 + Math.random() * 720,
                     duration: duration / 1000,
                     ease: 'none',
                     onComplete: () => {
@@ -1480,23 +1609,6 @@
                         }
                     }
                 });
-                
-                // Swinging motion (like being blown by wind)
-                petal.swingAnimation = gsap.to(petal, {
-                    x: '+=60',
-                    duration: swingDuration / 1000,
-                    repeat: -1,
-                    yoyo: true,
-                    ease: 'sine.inOut'
-                });
-                
-                // Random rotation wobble
-                petal.rotateAnimation = gsap.to(petal, {
-                    rotation: '+=360',
-                    duration: 8 + Math.random() * 4,
-                    repeat: -1,
-                    ease: 'none'
-                });
             }
             
             addInteraction(petal) {
@@ -1505,7 +1617,7 @@
                 
                 const moveAway = (e) => {
                     const now = Date.now();
-                    if (now - lastInteraction < 500) return; // Throttle interactions
+                    if (now - lastInteraction < 300) return;
                     
                     const rect = petal.getBoundingClientRect();
                     const centerX = rect.left + rect.width / 2;
@@ -1527,39 +1639,54 @@
                     if (distance < 100) {
                         lastInteraction = now;
                         
-                        // Get current transform values
-                        const currentTransform = gsap.getProperty(petal, 'transform');
-                        const currentX = gsap.getProperty(petal, 'x');
-                        const currentY = gsap.getProperty(petal, 'y');
-                        const currentRotation = gsap.getProperty(petal, 'rotation');
+                        // Get ACTUAL current position from styles
+                        const currentTop = parseFloat(petal.style.top) || rect.top;
+                        const currentLeft = parseFloat(petal.style.left) || rect.left;
+                        const currentRotation = gsap.getProperty(petal, 'rotation') || 0;
                         
-                        // Kill only the swing animation temporarily
-                        if (petal.swingAnimation) {
-                            petal.swingAnimation.pause();
-                        }
+                        // KILL all animations completely
+                        if (petal.fallAnimation) petal.fallAnimation.kill();
                         
                         const pushDistance = 150;
                         const angle = Math.atan2(deltaY, deltaX);
                         const pushX = Math.cos(angle) * pushDistance;
                         const pushY = Math.sin(angle) * pushDistance;
                         
-                        // Push the petal away
+                        const newLeft = currentLeft + pushX;
+                        const newTop = currentTop + pushY;
+                        const newRotation = currentRotation + (Math.random() * 180 - 90);
+                        
+                        // Push petal to new position
                         gsap.to(petal, {
-                            x: currentX + pushX,
-                            y: currentY + pushY,
-                            rotation: currentRotation + (Math.random() * 180 - 90),
+                            left: newLeft,
+                            top: newTop,
+                            rotation: newRotation,
                             duration: 0.4,
                             ease: 'power2.out',
                             onComplete: () => {
-                                // Resume swing animation from new position
-                                if (petal.swingAnimation) {
-                                    petal.swingAnimation.resume();
-                                }
+                                // Restart fall animation from NEW position
+                                const pageHeight = Math.max(
+                                    document.body.scrollHeight,
+                                    document.documentElement.scrollHeight
+                                );
+                                const remainingDistance = pageHeight - newTop;
+                                const remainingDuration = (remainingDistance / pageHeight) * 20;
+                                
+                                petal.fallAnimation = gsap.to(petal, {
+                                    top: pageHeight + 100,
+                                    rotation: newRotation + 360,
+                                    duration: Math.max(remainingDuration, 5),
+                                    ease: 'none',
+                                    onComplete: () => {
+                                        petal.remove();
+                                        const index = self.petals.indexOf(petal);
+                                        if (index > -1) {
+                                            self.petals.splice(index, 1);
+                                        }
+                                    }
+                                });
                             }
                         });
-                        
-                        // Continue falling animation doesn't need to be restarted
-                        // It continues from the new position automatically
                     }
                 };
                 
