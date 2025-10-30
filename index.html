@@ -122,6 +122,32 @@
                 width: calc(100% - 2rem);
             }
         }
+
+        /* Principal Sponsors layout fixes */
+        .sponsor-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 2px solid #FCD34D;
+            border-radius: 1rem;
+            padding: 1.25rem 1.5rem;
+            box-shadow: 0 10px 25px rgba(251, 146, 60, 0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .sponsor-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 35px rgba(251, 146, 60, 0.22);
+        }
+        /* Subtle alternating angle on mobile only; reset on laptop */
+        .sponsor-list > li {
+            transform-origin: center;
+        }
+        @media (max-width: 767px) {
+            .sponsor-list > li:nth-child(odd) { transform: rotate(-1.2deg); }
+            .sponsor-list > li:nth-child(even) { transform: rotate(1.2deg); }
+        }
+        @media (min-width: 768px) {
+            /* Ensure no angles and perfect centering on laptop/desktop */
+            .sponsor-list > li { transform: none !important; }
+        }
     </style>
 </head>
 <body class="bg-white">
@@ -151,6 +177,33 @@
                     </svg>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Principal Sponsors Section -->
+    <section id="sponsors" class="bg-white py-24 md:py-32">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-14 md:mb-16">
+                <h2 class="text-4xl md:text-6xl font-bold text-gray-900">Principal Sponsors</h2>
+                <p class="mt-4 text-gray-600 md:text-lg">Thank you for your love and support</p>
+            </div>
+
+            <ul class="sponsor-list grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                <li class="sponsor-card text-center font-semibold text-gray-800">Mr. Joseph F. Mazo</li>
+                <li class="sponsor-card text-center font-semibold text-gray-800">Mrs. Armi F. Mazo</li>
+                <li class="sponsor-card text-center font-semibold text-gray-800">Mr. Hilarion M. Marquina Jr.</li>
+                <li class="sponsor-card text-center font-semibold text-gray-800">Mrs. Marivic M. Mijares</li>
+                <li class="sponsor-card text-center font-semibold text-gray-800">Mr. Eduardo Adarlo</li>
+                <li class="sponsor-card text-center font-semibold text-gray-800">Mrs. Janet N. Escalada</li>
+                <li class="sponsor-card text-center font-semibold text-gray-800">Mr. Romeo E. Capalad</li>
+                <li class="sponsor-card text-center font-semibold text-gray-800">Mrs. Erna S. Capalad</li>
+                <li class="sponsor-card text-center font-semibold text-gray-800">Mr. Heval M. Magracia</li>
+                <li class="sponsor-card text-center font-semibold text-gray-800">Mrs. Rowena M. Magracia</li>
+                <li class="sponsor-card text-center font-semibold text-gray-800">Hon. Lydon Molino</li>
+                <li class="sponsor-card text-center font-semibold text-gray-800">Mrs. Osie M. Rguas</li>
+                <li class="sponsor-card text-center font-semibold text-gray-800">Mr. Timothy T. Sejane</li>
+                <li class="sponsor-card text-center font-semibold text-gray-800">Gov. Trina Alejandra F. Fabic</li>
+            </ul>
         </div>
     </section>
 
